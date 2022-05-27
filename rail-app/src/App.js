@@ -1,24 +1,55 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from "./navbar"
+import FormField from "./formfield"
+import {useState} from 'react';
+import addValues from './middle';
 
 function App() {
+
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChangeName = (e) => {
+
+      setName(e.target.value);
+        console.log(name);
+  }
+
+  const onChangePass = (e) => {
+    setPassword(e.target.value);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const obj = {
+      'name' : name,
+      'password' : password
+    }
+
+    addValues(obj).then( ()=>{console.log("THe Request made to create was Resolved!")});
+
+    setName("");
+    setPassword("");
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <Navbar/>
+    <div className="personal-details">
+      <p style = {{fontWeight:'bold',fontSize:'20px',margin:'10px'}}>Create Your Account</p>
+      <div className="head_card"> 
+        <span className="title">Basic Details</span>
+        <span className="title">Personal Details</span>
+        </div>
+        <form onSubmit={handleSubmit}>
+        <FormField label='Name' type='text' value={name} onChange={onChangeName} />
+        <br/>
+        <FormField label='Password' type='password' value={password}  onChange={onChangePass} />
+        <br/>
+        <button style={{padding:'10px',backgroundColor:'green',color:'white'}} type='submit'>Submit</button>
+        </form>
     </div>
+    </>
   );
 }
 
