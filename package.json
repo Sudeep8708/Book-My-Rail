@@ -1,0 +1,28 @@
+{
+  "name": "book-my-rail",
+  "version": "1.0.0",
+  "description": "A web app to book rail tickets using mern stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sathyanaraayanaa/Book-My-Rail.git"
+  },
+  "author": "Cypher Mastero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sathyanaraayanaa/Book-My-Rail/issues"
+  },
+  "homepage": "https://github.com/sathyanaraayanaa/Book-My-Rail#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
