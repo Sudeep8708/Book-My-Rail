@@ -10,7 +10,6 @@ function App() {
   const [password, setPassword] = useState("");
 
   const onChangeName = (e) => {
-
       setName(e.target.value);
         console.log(name);
   }
@@ -26,7 +25,7 @@ function App() {
       'password' : password
     }
 
-    addValues(obj).then( ()=>{console.log("THe Request made to create was Resolved!")});
+    addValues(obj).then( ()=>{console.log("The Request made to create was Resolved!")});
 
     setName("");
     setPassword("");
