@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital@0;1&display=swap');
+
+#passForm {
+	display: flexbox;
+	width: 80%;	
+	box-shadow: 0 0 5px 2px;
+	padding: 10px;
+}
+
+#passForm > p {
+	margin: 0.5em;
+	font-family: 'PT Sans',sans-serif;
+	font-size: 1.5rem;
+	font-weight: 400;
+}
+
+#passForm > div {
+	margin: 2px;
+}
+
+div input,select{
+	border-radius: 2px;
+	text-align: center;
+	height: 2em;
+	width: 15rem;
+	margin: 0.5em;
+	border: 2px solid black;
+}
+
+div select {
+	background-color: white;
+	height: 2.42em;
+}
+
+div input:focus {
+	border-bottom: 2px solid blue;
+}
+
+.linker {
+	color: rgb(37, 109, 234);
+	margin: 1em;
+}
+
+.linker:hover{
+	text-decoration: underline;
+}
+
+input[type="submit"] {
+	color: black;
+	background-color: white;
+	height: 2.42em;
+	box-shadow: 0 0 2px 1px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover{
+	color: green;
+}
+
+
+ 
+
+
+
+

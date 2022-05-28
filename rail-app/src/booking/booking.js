@@ -1,5 +1,8 @@
 import { useState } from "react"
-import FormField from "../login-page/formfield"
+import "./bookPage.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 const Booking = () => {
 	const profile = [{
@@ -46,24 +49,34 @@ const Booking = () => {
 	return (
 		/* <FormField	type="text" value={passenger.name} onChange={handlePassenger} /> */
 		<div id="passForm">
-		<h1>FORM</h1>
+		<p>Passenger details</p>
 		<form onSubmit={submitChange}>
 		{
 			// console.log(typeof(passenger));
 			passenger.map((item,i) => {
 				return (
 					<div id={i}>
-					<FormField label="name" type="text" onChange={handleChange} />
-					<FormField label="age" type="number" onChange={handleChange} />
-					<FormField label="gender" type="text" onChange={handleChange} />
-					<FormField label="preference" type="text"  onChange={handleChange} />
+					<input name="name" type="text" placeholder="name" onChange={handleChange} />
+					<input name="age" placeholder="age" type="number" onChange={handleChange} />
+					<select name="gender" placeholder="Gender" onChange={handleChange}>
+						<option>Gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Others">Others</option>
+					</select>
+					<select name="preference" onChange={handleChange}>
+						<option value="Null">no preference</option>
+						<option value="Window">Window</option>
+					</select>
 					</div>
 				);
 			})
 		}
-		<FormField label="submit" type="submit" value="submit" onChange={submitChange} />
+		<div class="linker" onClick={addPassenger}>
+		<FontAwesomeIcon icon={faPlus} size="l" /> Add a passenger
+		</div>
+		<input type="submit" value="Continue" onChange={submitChange} />
 		</form>
-		<button onClick={addPassenger} > plus </button>
 		</div>
 	)
 }
