@@ -1,5 +1,5 @@
-import './App.css';
-import Navbar from "./login-page/navbar"
+// import './App.css';
+import Navbar from "./navbar/nav-bar"
 import FormField from "./login-page/formfield"
 import {useState} from 'react';
 import addValues from './login-page/middle';

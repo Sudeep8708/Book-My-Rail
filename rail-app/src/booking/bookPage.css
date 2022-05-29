@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital@0;1&display=swap');
+
+*{
+	font-family: 'PT Sans',sans-serif;
+}
+
+.booking-section {
+	position: relative;
+	display: flexbox;
+	justify-content: center;
+}
+
+.fare {
+	position: relative;
+	right: 5px;
+}
+
+.passenger-detail {
+	width: 70%;	
+	box-shadow: 0 0 5px 2px;
+	padding: 10px;
+	margin: 2em;
+}
+
+.passenger-detail > p {
+	font-size: 1.8rem;
+	font-weight: 800;
+	border-bottom: 2px solid black;
+}
+
+#passForm > div {
+	margin: 2px;
+	width: 100%;
+	font-size: 1.2rem;
+}
+
+div input,select{
+	border-radius: 2px;
+	text-align: center;
+	height: 2em;
+	width: 18rem;
+	margin: 0.5em;
+	border: 2px solid black;
+}
+
+div select {
+	background-color: white;
+	height: 2.42em;
+}
+
+.linker {
+	color: rgb(37, 109, 234);
+	margin: 1em;
+}
+
+.linker:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+input[type="submit"] {
+	color: black;
+	background-color: white;
+	height: 2.42em;
+	box-shadow: 0 0 2px 1px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover{
+	color: green;
+}
+
+.ticket {
+	position: fixed;
+	top: 3.5em;
+	right: 0;
+	width: 20%;	
+	box-shadow: 0 0 5px 2px;
+	padding: 10px;
+	margin: 2em;
+}
+
+
+ 
+
+
+
+
