@@ -1,0 +1,10 @@
+body,html {
+	margin: 0;
+}
+.nav-bar {
+	background-color: black;
+	height: 1.5em;
+	padding: 1em;
+	text-align: center;
+	margin-bottom: 1rem;
+}

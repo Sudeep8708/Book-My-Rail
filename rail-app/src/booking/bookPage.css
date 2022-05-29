@@ -1,28 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital@0;1&display=swap');
 
-#passForm {
-	display: flexbox;
-	width: 80%;	
-	box-shadow: 0 0 5px 2px;
-	padding: 10px;
+*{
+	font-family: 'PT Sans',sans-serif;
 }
 
-#passForm > p {
-	margin: 0.5em;
-	font-family: 'PT Sans',sans-serif;
-	font-size: 1.5rem;
-	font-weight: 400;
+.booking-section {
+	position: relative;
+	display: flexbox;
+	justify-content: center;
+}
+
+.fare {
+	position: relative;
+	right: 5px;
+}
+
+.passenger-detail {
+	width: 70%;	
+	box-shadow: 0 0 5px 2px;
+	padding: 10px;
+	margin: 2em;
+}
+
+.passenger-detail > p {
+	font-size: 1.8rem;
+	font-weight: 800;
+	border-bottom: 2px solid black;
 }
 
 #passForm > div {
 	margin: 2px;
+	width: 100%;
+	font-size: 1.2rem;
 }
 
 div input,select{
 	border-radius: 2px;
 	text-align: center;
 	height: 2em;
-	width: 15rem;
+	width: 18rem;
 	margin: 0.5em;
 	border: 2px solid black;
 }
@@ -32,10 +48,6 @@ div select {
 	height: 2.42em;
 }
 
-div input:focus {
-	border-bottom: 2px solid blue;
-}
-
 .linker {
 	color: rgb(37, 109, 234);
 	margin: 1em;
@@ -43,6 +55,7 @@ div input:focus {
 
 .linker:hover{
 	text-decoration: underline;
+	cursor: pointer;
 }
 
 input[type="submit"] {
@@ -55,6 +68,16 @@ input[type="submit"] {
 
 input[type="submit"]:hover{
 	color: green;
+}
+
+.ticket {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 20%;	
+	box-shadow: 0 0 5px 2px;
+	padding: 10px;
+	margin: 2em;
 }
 
 
