@@ -15,7 +15,7 @@ export default function InputWithIcon(props) {
     <Box sx={{ '& > :not(style)': { m: 1 } }}>
       <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
         <Icon />
-        <TextField id={props.id} label={props.label} variant="standard" />
+        <TextField id={props.id} label={props.label} variant="standard" name={props.label} onChange={props.onchange}/>
       </Box>
     </Box>
   );

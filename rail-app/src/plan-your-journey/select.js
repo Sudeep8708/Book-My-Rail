@@ -26,11 +26,12 @@ const classes = [
   },
 ];
 
-export default function SelectTextFields() {
+export default function SelectTextFields(props) {
   const [class_t, setclass_t] = React.useState('1A');
 
   const handleChange = (event) => {
     setclass_t(event.target.value);
+    props.onchange(event);
   };
 
   return (
@@ -48,6 +49,7 @@ export default function SelectTextFields() {
           select
           label="Select"
           value={class_t}
+          name="select"
           onChange={handleChange}
           helperText="Please select your class"
         >
