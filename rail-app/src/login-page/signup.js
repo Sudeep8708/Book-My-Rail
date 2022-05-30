@@ -1,4 +1,6 @@
 import "./login.css";
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import Navbar from "../navbar/nav-bar";
 import FormField from "./formfield";
 import { useState } from "react";
@@ -59,12 +61,17 @@ const PersonalDetails = (acc) => {
               onChange={acc.onChangeAccount}
           />
           <br />
-          <div>
-              <input
-                  type="proof"
-                  value="text"
+          <FormField
+                  label="proof"
+                  type="text"
                   onClick={acc.handleSubmit}
-              />
+          />
+          <div>
+                <input
+                    type="submit"
+                    value="Submit"
+                    onClick={acc.handleSubmit}
+                />
           </div>
       </form>
   );
@@ -92,20 +99,34 @@ function App() {
 
     return (
         <>
+        <BrowserRouter>
             <Navbar />
             <div className="personal-details">
                 <p>Create Your Account</p>
                 <div className="head_card">
-                    <div className="title">Basic Details</div>
-                    <div className="title">Personal Details</div>
+                    <NavLink to="/" className="title">Basic Details</NavLink>
+                    <NavLink to="/personal" className="title">Personal Details</NavLink>
                 </div>
-                <BasicDetails
+                
+                <Routes>
+                <Route path="/" element={<BasicDetails
                     account={account}
                     onChangeAccount={onChangeAccount}
                     handleSubmit={handleSubmit}
+                />}
                 />
+                <Route path="/personal" element={<PersonalDetails
+                    account={account}
+                    onChangeAccount={onChangeAccount}
+                    handleSubmit={handleSubmit}
+                />}
+                />
+                </Routes>
+                
             </div>
+            </BrowserRouter>            
         </>
+        
     );
 }
 
