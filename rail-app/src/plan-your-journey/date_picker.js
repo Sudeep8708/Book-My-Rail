@@ -9,7 +9,6 @@ export default function ResponsiveDatePickers(props) {
   const [value, setValue] = React.useState(new Date());
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Stack spacing={3}>
         <DatePicker
           disableFuture
           label="Pick your date"
@@ -25,7 +24,6 @@ export default function ResponsiveDatePickers(props) {
           return <TextField {...params} name="date_picker" onBlur={props.onchange}/>
         }}
         />
-      </Stack>
     </LocalizationProvider>
   );
 }
