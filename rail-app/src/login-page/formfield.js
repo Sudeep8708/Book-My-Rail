@@ -4,7 +4,7 @@ const FormField = ({label, type, value, onChange}) => {
     return (
         <>
         <label>{label}</label>
-        <input name={label} type={type} value={value} onChange={onChange} />
+        <input name={label} placeholder={label} type={type} value={value} onChange={onChange} />
         <br/>
         </>
     )

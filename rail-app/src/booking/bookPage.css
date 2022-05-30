@@ -58,16 +58,16 @@ div select {
 	cursor: pointer;
 }
 
-input[type="submit"] {
-	color: black;
-	background-color: white;
-	height: 2.42em;
-	box-shadow: 0 0 2px 1px;
+input[type="submit"],input[type="button"] {
+	color: white;
+	background-color: rgb(2, 196, 2);;
+	height: 3em;
 	cursor: pointer;
 }
 
-input[type="submit"]:hover{
-	color: green;
+input[type="submit"]:hover,input[type="button"]:hover{
+	background-color: rgb(38, 224, 38);
+	box-shadow: 0 0 5px 2px;
 }
 
 .ticket {

@@ -1,0 +1,112 @@
+import "./login.css";
+import Navbar from "../navbar/nav-bar";
+import FormField from "./formfield";
+import { useState } from "react";
+import addValues from "./middle";
+//Test file plan your journey not a part of this page
+
+const BasicDetails = (acc) => {
+    const account = acc.account;
+    return (
+        <form className="form-entry">
+            <FormField
+                label="name"
+                type="text"
+                onChange={acc.onChangeAccount}
+            />
+            <FormField
+                label="email"
+                type="email"
+                onChange={acc.onChangeAccount}
+            />
+            <br />
+            <FormField
+                label="password"
+                type="password"
+                onChange={acc.onChangeAccount}
+            />
+            <br />
+            <div>
+                <input
+                    type="button"
+                    value="Continue"
+                    onClick={acc.handleSubmit}
+                />
+            </div>
+        </form>
+    );
+};
+
+
+const PersonalDetails = (acc) => {
+  const account = acc.account;
+  return (
+      <form className="form-entry">
+          <FormField
+              label="address"
+              type="text"
+              onChange={acc.onChangeAccount}
+          />
+          <FormField
+              label="age"
+              type="number"
+              onChange={acc.onChangeAccount}
+          />
+          <br />
+          <FormField
+              label="gender"
+              type="text"
+              onChange={acc.onChangeAccount}
+          />
+          <br />
+          <div>
+              <input
+                  type="proof"
+                  value="text"
+                  onClick={acc.handleSubmit}
+              />
+          </div>
+      </form>
+  );
+};
+
+function App() {
+    const [account, setAccount] = useState({
+        name: "",
+        email: "",
+        password: "",
+        age: 0,
+        address: "",
+        contact: "",
+        proof: "",
+    });
+
+    const onChangeAccount = (e) => {
+        setAccount({ ...account, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(account);
+    };
+
+    return (
+        <>
+            <Navbar />
+            <div className="personal-details">
+                <p>Create Your Account</p>
+                <div className="head_card">
+                    <div className="title">Basic Details</div>
+                    <div className="title">Personal Details</div>
+                </div>
+                <BasicDetails
+                    account={account}
+                    onChangeAccount={onChangeAccount}
+                    handleSubmit={handleSubmit}
+                />
+            </div>
+        </>
+    );
+}
+
+export default App;
