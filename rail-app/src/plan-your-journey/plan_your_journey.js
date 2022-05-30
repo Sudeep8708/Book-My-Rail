@@ -32,23 +32,23 @@ const Plan_your_journey = () => {
             },
             method: 'POST', body: JSON.stringify(obj)
         }).then(function(response){
-            return response.json();
+            console.log(response.json());
         });
     }
     return ( 
         <div className="form-container" >
             <h1> Plan Your Journey </h1> 
             <div className="city">
-            <InputWithIcon label="from" id="form" onchange={onChangeObj}/>
+            <InputWithIcon label="from" id="form" onchange={onChangeObj} required/>
             </div>
             <div className="city">
-            <InputWithIcon label="to" id="to" onchange={onChangeObj}/>
+            <InputWithIcon label="to" id="to" onchange={onChangeObj} required/>
             </div>
             <div>
-            <ResponsiveDatePickers onchange={onChangeDate}/>
+            <ResponsiveDatePickers onchange={onChangeDate} required/>
             </div>
-            <SelectTextFields onchange={onChangeObj}/>
-            <ContainedButtons value="Search" onclick={onChangeObj}/>
+            <SelectTextFields onchange={onChangeObj} required/>
+            <ContainedButtons value="Search" onclick={handleSubmit}/>
         </div>
     );
 }

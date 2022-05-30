@@ -1,10 +1,9 @@
 // import './App.css';
-import Navbar from "./navbar/nav-bar"
-import FormField from "./login-page/formfield"
+import Navbar from "../navbar/nav-bar"
+import FormField from "./formfield"
 import {useState} from 'react';
-import addValues from './login-page/middle';
+import addValues from './middle';
 //Test file plan your journey not a part of this page
-import Plan_your_journey from './plan-your-journey/plan_your_journey';
 
 function App() {
 
@@ -36,7 +35,6 @@ function App() {
   return (
     <>
     <Navbar/>
-    <Plan_your_journey/>
     <div className="personal-details">
       <p style = {{fontWeight:'bold',fontSize:'20px',margin:'10px'}}>Create Your Account</p>
       <div className="head_card"> 
