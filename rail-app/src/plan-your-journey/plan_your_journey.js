@@ -39,15 +39,15 @@ const Plan_your_journey = () => {
         <div className="form-container" >
             <h1> Plan Your Journey </h1> 
             <div className="city">
-            <InputWithIcon label="from" id="form" onchange={onChangeObj} required/>
+            <InputWithIcon label="from" id="form" onchange={onChangeObj}/>
             </div>
             <div className="city">
-            <InputWithIcon label="to" id="to" onchange={onChangeObj} required/>
+            <InputWithIcon label="to" id="to" onchange={onChangeObj}/>
             </div>
             <div>
-            <ResponsiveDatePickers onchange={onChangeDate} required/>
+            <ResponsiveDatePickers onchange={onChangeDate}/>
             </div>
-            <SelectTextFields onchange={onChangeObj} required/>
+            <SelectTextFields onchange={onChangeObj}/>
             <ContainedButtons value="Search" onclick={handleSubmit}/>
         </div>
     );

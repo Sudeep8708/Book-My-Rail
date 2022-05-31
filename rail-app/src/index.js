@@ -6,10 +6,16 @@ import App from './login-page/signup';
 import reportWebVitals from './reportWebVitals';
 import Book from "./booking/booking"
 import Plan_your_journey from './plan-your-journey/plan_your_journey';
+import TrainDetail from './train-schedule/train';
+import LoginDetails from './login-page/login'
 
 export default function Main() {
   return (
-    <App />
+    <>
+    <LoginDetails />
+    <TrainDetail />
+    </>
+    // <App />
     // <BrowserRouter>
     //   <Routes>
     //     <Route path="/" element={<App />}>

@@ -1,32 +1,33 @@
-const LoginDetails = (acc) => {
-    const account = acc.account;
+import FormField from "./formfield";
+import { useState} from "react"
+
+const LoginDetails = () => {
+    const profile = {
+        username: "",
+        password: ""
+    }
+    const [account,setAccount] = useState(profile)
+    const onChangeAccount = (e) => {
+        setAccount({...account, [account.target.name] : e.target.value})
+    }
     return (
         <form className="form-entry">
             <FormField
                 label="name"
                 type="text"
-                onChange={acc.onChangeAccount}
-            />
-            <FormField
-                label="email"
-                type="email"
-                onChange={acc.onChangeAccount}
+                onChange={onChangeAccount}
             />
             <br />
             <FormField
                 label="password"
                 type="password"
-                onChange={acc.onChangeAccount}
+                onChange={onChangeAccount}
             />
-            <br />
             <div>
-            <NavLink to="/personal" className="title">
-                <input
-                    type="button"
-                    value="Continue"
-                />
-                </NavLink>
+                <input type="submit" value="Log in" />
             </div>
         </form>
     );
 };
+
+export default LoginDetails

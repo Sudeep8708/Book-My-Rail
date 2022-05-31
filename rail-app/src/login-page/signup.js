@@ -2,81 +2,10 @@ import "./login.css";
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import Navbar from "../navbar/nav-bar";
-import FormField from "./formfield";
 import { useState } from "react";
+import BasicDetails from "./basic-details";
+import PersonalDetails from "./personal-details";
 import addValues from "./middle";
-//Test file plan your journey not a part of this page
-
-const BasicDetails = (acc) => {
-    const account = acc.account;
-    return (
-        <form className="form-entry">
-            <FormField
-                label="name"
-                type="text"
-                onChange={acc.onChangeAccount}
-            />
-            <FormField
-                label="email"
-                type="email"
-                onChange={acc.onChangeAccount}
-            />
-            <br />
-            <FormField
-                label="password"
-                type="password"
-                onChange={acc.onChangeAccount}
-            />
-            <br />
-            <div>
-            <NavLink to="/personal" className="title">
-                <input
-                    type="button"
-                    value="Continue"
-                />
-                </NavLink>
-            </div>
-        </form>
-    );
-};
-
-
-const PersonalDetails = (acc) => {
-  const account = acc.account;
-  return (
-      <form className="form-entry">
-          <FormField
-              label="address"
-              type="text"
-              onChange={acc.onChangeAccount}
-          />
-          <FormField
-              label="age"
-              type="number"
-              onChange={acc.onChangeAccount}
-          />
-          <br />
-          <FormField
-              label="gender"
-              type="text"
-              onChange={acc.onChangeAccount}
-          />
-          <br />
-          <FormField
-                  label="proof"
-                  type="text"
-                  onClick={acc.onChangeAccount}
-          />
-          <div>
-                <input
-                    type="submit"
-                    value="Submit"
-                    onClick={acc.handleSubmit}
-                />
-          </div>
-      </form>
-  );
-};
 
 function App() {
     const [account, setAccount] = useState({
@@ -93,24 +22,50 @@ function App() {
         setAccount({ ...account, [e.target.name]: e.target.value });
     };
 
+    const userCheck = (e) => {
+        const getData = () => {
+            fetch('http://localhost:5000/usercheck', { 
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST', body: JSON.stringify(account)
+            }).then(function(response){
+                console.log(response.json());
+                return response.json();
+            });
+        }
+    }
+
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(account);
+        if(account["age"] < 18){
+            alert("User has to be an adult");
+        }
+        // for(const i in account){
+        //     if(account[i] === "")
+        // }
+        fetch('http://localhost:5000/signup', { 
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST', body: JSON.stringify(account)
+        }).then(function(response){
+            console.log(response.json());
+        });
     };
 
     return (
-        <>
         <BrowserRouter>
             <Navbar />
             <div className="personal-details">
                 <p>Create Your Account</p>
                 <div className="head_card">
-                    <NavLink to="/" className="title">Basic Details</NavLink>
+                    <NavLink to="/basic" className="title">Basic Details</NavLink>
                     <NavLink to="/personal" className="title">Personal Details</NavLink>
                 </div>
-                
                 <Routes>
-                <Route path="/" element={<BasicDetails
+                <Route path="/basic" element={<BasicDetails
                     account={account}
                     onChangeAccount={onChangeAccount}
                     handleSubmit={handleSubmit}
@@ -123,10 +78,8 @@ function App() {
                 />}
                 />
                 </Routes>
-                
             </div>
             </BrowserRouter>            
-        </>
         
     );
 }

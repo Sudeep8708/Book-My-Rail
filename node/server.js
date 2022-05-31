@@ -21,6 +21,10 @@ app.post('/authenticate', (req, res) => {
       });
     console.log(req.body)
 })
+
+app.post('/usercheck', (req, res) => {
+    con.query("select count(*) from ")
+})
 app.listen(5000, () => {
     console.log("connected")
 });

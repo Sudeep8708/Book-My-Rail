@@ -1,0 +1,43 @@
+.train-container {
+    text-align: center;
+    margin: 10px;
+    display: flex;
+    width: 60%;
+    box-shadow: 0 0 4px 1px;
+    flex-direction: column;
+    align-items: space-around;
+}
+
+.value-container {
+    border-bottom: 2px solid black;
+    padding: 0.5rem;
+}
+
+.to-from {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 2px solid black;
+}
+
+.class-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.class-container > div {
+    box-sizing: content-box;
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 5rem;
+    box-shadow: 0 0 2px 1px;
+}
+
+.class-container > div:hover {
+    cursor: pointer;
+}
+
+
+
+
