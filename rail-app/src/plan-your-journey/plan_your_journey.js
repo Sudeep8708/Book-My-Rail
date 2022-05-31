@@ -3,11 +3,15 @@ import ResponsiveDatePickers from "./date_picker";
 import SelectTextFields from "./select";
 import ContainedButtons from "./button";
 import {useState} from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 import "./plan.css"
+//import { useNavigate } from "react-router-dom";
+import Booking from "../booking/booking";
 
 const Plan_your_journey = () => {
+    const navigate = useNavigate(); 
     const [obj, setObj] = useState({
         from: '',
         to: '',
@@ -34,9 +38,11 @@ const Plan_your_journey = () => {
         }).then(function(response){
             console.log(response.json());
         });
+        navigate('trainschedule',{state:obj});
     }
     return ( 
         <div className="form-container" >
+            
             <h1> Plan Your Journey </h1> 
             <div className="city">
             <InputWithIcon label="from" id="form" onchange={onChangeObj}/>

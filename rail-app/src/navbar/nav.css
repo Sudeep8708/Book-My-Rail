@@ -19,3 +19,10 @@ body,html {
 	height: 2em;
 	margin: 5px;
 }
+
+.nav-links{
+	padding:10px;
+	text-decoration:none;
+	font-size:22px;
+	color:white;
+}

@@ -1,6 +1,6 @@
 import "./login.css";
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-import { NavLink } from "react-router-dom"
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
+import { NavLink,useNavigate} from "react-router-dom"
 import Navbar from "../navbar/nav-bar";
 import { useState } from "react";
 import BasicDetails from "./basic-details";
@@ -8,6 +8,7 @@ import PersonalDetails from "./personal-details";
 import addValues from "./middle";
 
 function App() {
+    const navigate = useNavigate();
     const [account, setAccount] = useState({
         name: "",
         email: "",
@@ -38,6 +39,7 @@ function App() {
     }
 
     const handleSubmit = (e) => {
+      e.preventDefault();
         if(account["age"] < 18){
             alert("User has to be an adult");
         }
@@ -52,26 +54,26 @@ function App() {
             method: 'POST', body: JSON.stringify(account)
         }).then(function(response){
             console.log(response.json());
+            navigate('/');
         });
     };
 
     return (
-        <BrowserRouter>
-            <Navbar />
+        <>
             <div className="personal-details">
                 <p>Create Your Account</p>
                 <div className="head_card">
-                    <NavLink to="/basic" className="title">Basic Details</NavLink>
-                    <NavLink to="/personal" className="title">Personal Details</NavLink>
+                    <NavLink to="basic" className="title">Basic Details</NavLink>
+                    <NavLink to="personal" className="title">Personal Details</NavLink>
                 </div>
                 <Routes>
-                <Route path="/basic" element={<BasicDetails
+                <Route path="basic" element={<BasicDetails
                     account={account}
                     onChangeAccount={onChangeAccount}
                     handleSubmit={handleSubmit}
                 />}
                 />
-                <Route path="/personal" element={<PersonalDetails
+                <Route path="personal" element={<PersonalDetails
                     account={account}
                     onChangeAccount={onChangeAccount}
                     handleSubmit={handleSubmit}
@@ -79,7 +81,7 @@ function App() {
                 />
                 </Routes>
             </div>
-            </BrowserRouter>            
+            </>           
         
     );
 }

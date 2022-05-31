@@ -1,17 +1,4 @@
-.train-container {
-    text-align: center;
-    margin: 10px;
-    display: flex;
-    width: 60%;
-    box-shadow: 0 0 4px 1px;
-    flex-direction: column;
-    align-items: space-around;
-}
 
-.value-container {
-    border-bottom: 2px solid black;
-    padding: 0.5rem;
-}
 
 .to-from {
     display: flex;
