@@ -29,11 +29,12 @@ const BasicDetails = (acc) => {
             />
             <br />
             <div>
+            <NavLink to="/personal" className="title">
                 <input
                     type="button"
                     value="Continue"
-                    onClick={acc.handleSubmit}
                 />
+                </NavLink>
             </div>
         </form>
     );
@@ -64,7 +65,7 @@ const PersonalDetails = (acc) => {
           <FormField
                   label="proof"
                   type="text"
-                  onClick={acc.handleSubmit}
+                  onClick={acc.onChangeAccount}
           />
           <div>
                 <input
