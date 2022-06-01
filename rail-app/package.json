@@ -25,15 +25,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-rating-tooltip": "^1.2.0",
-<<<<<<< HEAD
     "react-scripts": "^5.0.1",
-=======
-    "react-scripts": "5.0.1",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
-    "url": "^0.11.0",
-    "util": "^0.12.4",
->>>>>>> 7056d6708d5f010d14b81d452585717260dc6042
     "web-vitals": "^2.1.4"
   },
   "scripts": {
