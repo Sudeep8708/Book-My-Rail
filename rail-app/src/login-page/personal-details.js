@@ -3,7 +3,12 @@ import FormField from "./formfield";
 const PersonalDetails = (acc) => {
     const account = acc.account;
     return (
-        <form className="form-entry">
+        <form className="form-entry" method="post">
+            <FormField
+                label="name"
+                type="text"
+                onChange={acc.onChangeAccount}
+            />
             <FormField
                 label="address"
                 type="text"
@@ -22,8 +27,14 @@ const PersonalDetails = (acc) => {
             />
             <br />
             <FormField
+                    label="contact"
+                    type="number"
+                    onChange={acc.onChangeAccount}
+            />
+            <br />
+            <FormField
                     label="proof"
-                    type="text"
+                    type="number"
                     onChange={acc.onChangeAccount}
             />
             <div>

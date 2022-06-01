@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const app = express(); 
-//const con = require('./db_connect');
+const con = require('./db_connect');
 
 
 app.use(cors());
@@ -23,12 +23,23 @@ app.post('/authenticate', (req, res) => {
 })
 
 app.post('/usercheck', (req, res) => {
-    con.query("select count(*) as c from passenger where username = '"+ String(req.body.name) +"'", function (err, result, fields) {
+    con.query("select count(*) as c from passenger where username = '"+ String(req.body.username) +"'", function (err, result, fields) {
         if(err) throw err;
         console.log(result);
         res.send(result);
     })
 })
+
+app.post('/signup', (req, res) => {
+    console.log(req.body)
+    const q = "insert into passenger values('"+ String(req.body.username) +"', "+ req.body.proof +", '"+ String(req.body.name) + "', " + req.body.age + ", '"+ String(req.body.gender) +"', '"+ String(req.body.address) +"', "+ req.body.contact +", '"+ String(req.body.password) +"', '"+ String(req.body.email) + "')"
+    con.query(q, function (err, result, fields) {
+        if(err) throw err;
+        console.log(result);
+        res.send(result);
+    })
+})
+
 app.listen(5000, () => {
     console.log("connected")
 });
