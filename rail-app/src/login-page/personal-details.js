@@ -29,7 +29,7 @@ const PersonalDetails = (acc) => {
             <div>
                   <input
                       type="submit"
-                      value="Submit"
+                      value="Create Account"
                       onClick={acc.handleSubmit}
                   />
             </div>

@@ -1,6 +1,6 @@
 import "./login.css";
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-import { NavLink, useNavigate } from "react-router-dom"
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
+import { NavLink,useNavigate} from "react-router-dom"
 import Navbar from "../navbar/nav-bar";
 import { useState } from "react";
 import BasicDetails from "./basic-details";
@@ -22,7 +22,7 @@ function App() {
         setAccount({ ...account, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const userCheck = (e) => {
         const getData = () => {
             fetch('http://localhost:5000/usercheck', { 
                 headers: {
@@ -40,6 +40,10 @@ function App() {
         } else {
             alert("Username already in use");
         }   
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
         if(account["age"] < 18){
             alert("User has to be an adult");
         }
@@ -54,26 +58,26 @@ function App() {
             method: 'POST', body: JSON.stringify(account)
         }).then(function(response){
             console.log(response.json());
+            navigate('/');
         });
     };
 
     return (
-        <BrowserRouter>
-            <Navbar />
-            <div className="personal-details">
+        <>
+            <div className="container acc-details">
                 <p>Create Your Account</p>
                 <div className="head_card">
-                    <NavLink to="/basic" className="title">Basic Details</NavLink>
-                    <NavLink to="/personal" className="title">Personal Details</NavLink>
+                    <NavLink to="basic" className="title link">Basic Details</NavLink>
+                    <NavLink to="personal" className="title link">Personal Details</NavLink>
                 </div>
                 <Routes>
-                <Route path="/basic" element={<BasicDetails
+                <Route path="basic" element={<BasicDetails
                     account={account}
                     onChangeAccount={onChangeAccount}
                     handleSubmit={userCheck}
                 />}
                 />
-                <Route path="/personal" element={<PersonalDetails
+                <Route path="personal" element={<PersonalDetails
                     account={account}
                     onChangeAccount={onChangeAccount}
                     handleSubmit={handleSubmit}
@@ -81,7 +85,7 @@ function App() {
                 />
                 </Routes>
             </div>
-            </BrowserRouter>            
+            </>           
         
     );
 }

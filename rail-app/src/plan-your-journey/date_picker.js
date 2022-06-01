@@ -10,7 +10,6 @@ export default function ResponsiveDatePickers(props) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DatePicker
-          disableFuture
           label="Pick your date"
           name="date_picker"
           openTo="year"

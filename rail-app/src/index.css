@@ -1,20 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=PT+Sans:ital@0;1&family=Poppins:wght@100;200;300&family=Roboto+Mono:wght@100;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "PT Sans", sans-serif;
+}
+
+html,
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: linear-gradient(to right, #ffffff, #dbdffd);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 
-.personal-details{
-  width: 50%;
-  
+.booking-section {
+    position: relative;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.container {
+    margin: 2em;
+    width: 80%;
+    background-image: linear-gradient(135deg, #e8ebff, #fafaff, #e8ebff);
+    box-shadow: 3px 3px 12px 1px #646fd4;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.train-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+}
+
+.ticket {
+    position: fixed;
+    top: 4.5rem;
+    right: 2.5rem;
+    width: 30%;
+    padding: 10px;
+    margin: 2em;
+}
+
+#passForm > div {
+    margin: 2px;
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+.passenger-container > p {
+    font-size: 1.8rem;
+    font-weight: 800;
+    border-bottom: 2px solid black;
+}
+
+.value-container {
+    border-bottom: 2px solid black;
+    padding: 0.5rem;
+}
+
+.plan-container {
+    text-align: center;
+    margin: 2em 0 0 6rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.plan-container div {
+    margin-top: 1em;
+}
+
+.home-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.header-style {
+    width: 35%;
+    font-family: "Poppins", monospace;
+    font-size: 7rem;
+    text-overflow: clip;
+    text-shadow: 0 5px 7px #242f9b;
+}
+
+/* nav bar */
+body,
+html {
+    margin: 0;
+}
+.nav-bar {
+    position: sticky;
+    top: 0;
+    padding: 1em;
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-size {
+    top: 0;
+    left: 0;
+    width: 5em;
+    height: 5em;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-links > div {
+    margin-right: 1em;
+    padding: 1em 0 0 1em;
+}
+
+.link {
+    display: inline-block;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #242f9b;
+}
+
+.link:hover {
+    cursor: pointer;
+    border-bottom: 1px solid #242f9b;
+}
+
+/*  */
+.acc-details {
+    width: 50%;
+    margin: 0.5em auto;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+.acc-details > p {
+    text-align: center;
+    font-size: 2em;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.4em;
+}
+
+.form-entry {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.head_card {
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-entry input {
+    font-size: 1rem;
+}
+
+input[type="submit"],input[type="button"] {
+	color: white;
+	background-color: #334155;
+	height: 3em;
+	border:none;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover,input[type="button"]:hover{
+	background-color: #495e7b;
+	box-shadow: 0 0 5px 2px;
+}
+
+div input,select{
+    font-family: 'PT Sans',sans-serif;
+	border-radius: 5px;
+	text-align: center;
+	height: 2em;
+	width: 18rem;
+	margin: 0.5em;
+    border: 1px inset black;
+}
+
+div input:focus {
+    border-bottom: 3px solid #242f9b;   
+}
+
+
+div select {
+	background-color: white;
+	height: 2.42em;
+}
+
+.linker {
+	color: rgb(37, 109, 234);
+	margin: 1em;
+}
+
+.linker:hover{
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 

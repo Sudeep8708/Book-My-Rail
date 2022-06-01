@@ -13,7 +13,7 @@ export default function InputWithIcon(props) {
     const Icon = types[props.label];
   return (
     <Box sx={{ '& > :not(style)': { m: 1 } }}>
-      <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+      <Box sx={{ display: 'flex', alignItems: 'flex-end',justifyContent: 'center' }}>
         <Icon />
         <TextField id={props.id} label={props.label} variant="standard" name={props.label} onChange={props.onchange}/>
       </Box>
