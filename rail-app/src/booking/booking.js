@@ -5,7 +5,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMultiply } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../navbar/nav-bar";
 import TrainDetail from "../train-schedule/train";
-
+//import Card from "./ticket_view/card.js";
 const TicketFare = (props) => {
     const count = props.count + 1;
     let fare = 195 * count;
@@ -70,6 +70,7 @@ const Booking = () => {
         passenger.forEach((item) => {
             console.log(item.name + item.gender + item.age + item.preference);
         });
+
     };
 
     return (
