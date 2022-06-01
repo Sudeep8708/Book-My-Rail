@@ -26,7 +26,7 @@ export default function Main() {
       <Route path = "booking" element = {<Book />}/>
       <Route path = "trainschedule" element = {<Trainschedule/>}/>
       <Route path = "login" element = {<LoginDetails/>}/>
-      <Route path = "signup" element = {<Signup/>} >
+      <Route path = "signup/*" element = {<Signup/>} >
         <Route path = "basic" element = {<BasicDetails/>}/>
         <Route path = "personal" element = {<PersonalDetails/>}/>
       </Route>

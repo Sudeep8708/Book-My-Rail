@@ -12,9 +12,11 @@ function App() {
         name: "",
         email: "",
         password: "",
+        username: "",
         age: 0,
         address: "",
-        contact: "",
+        gender: "",
+        contact: 0,
         proof: "",
     });
     const [count_pass, setCount] = useState(0);
@@ -23,6 +25,7 @@ function App() {
     };
 
     const userCheck = (e) => {
+        e.preventDefault();
         const getData = () => {
             fetch('http://localhost:5000/usercheck', { 
                 headers: {
@@ -31,35 +34,44 @@ function App() {
                 },
                 method: 'POST', body: JSON.stringify(account)
             }).then(function(response){
-                setCount(response.json());
+                // console.log(response.json());
+                return response.json();
+            }).then(function(myjson){
+                console.log(myjson[0]["c"]);
+                setCount(myjson[0]["c"]);
             })
         }
         getData();
-        if(count_pass === 0) {
+        console.log(count_pass);
+        if(count_pass === 0 && account["username"].length > 0 && account["email"].length > 0 && account["password"].length > 0) {
             navigate('/signup/personal');
-        } else {
+        } else if (count_pass != 0){
             alert("Username already in use");
-        }   
+        }   else {
+            alert("Fields cant be empty");
+        }
     }
 
     const handleSubmit = (e) => {
-      e.preventDefault();
+        console.log(account);
+        e.preventDefault()
         if(account["age"] < 18){
             alert("User has to be an adult");
+        } else if(account["name"].length === 0 || account["email"].length === 0 || account["password"].length === 0
+        || account["address"].length === 0 || account["contact"].length === 0 || account["proof"].length === 0 || account["username"].length === 0) { 
+            alert("Fields cant be empty");
+        } else{
+            console.log(account);
+            fetch('http://localhost:5000/signup', { 
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST', body: JSON.stringify(account)
+            }).then(function(){
+                navigate('/');
+            });
         }
-        // for(const i in account){
-        //     if(account[i] === "")
-        // }
-        fetch('http://localhost:5000/signup', { 
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: 'POST', body: JSON.stringify(account)
-        }).then(function(response){
-            console.log(response.json());
-            navigate('/');
-        });
     };
 
     return (
