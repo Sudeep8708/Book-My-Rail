@@ -23,7 +23,11 @@ app.post('/authenticate', (req, res) => {
 })
 
 app.post('/usercheck', (req, res) => {
-    con.query("select count(*) from ")
+    con.query("select count(*) as c from passenger where username = '"+ String(req.body.name) +"'", function (err, result, fields) {
+        if(err) throw err;
+        console.log(result);
+        res.send(result);
+    })
 })
 app.listen(5000, () => {
     console.log("connected")

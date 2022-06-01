@@ -10,11 +10,15 @@ import TrainDetail from './train-schedule/train';
 import LoginDetails from './login-page/login'
 
 export default function Main() {
+
   return (
-    <>
-    <LoginDetails />
-    <TrainDetail />
-    </>
+    // <>
+    // <BrowserRouter>
+     <App />
+    // <LoginDetails />
+    // <TrainDetail />
+   // </BrowserRouter>
+    // </>
     // <App />
     // <BrowserRouter>
     //   <Routes>

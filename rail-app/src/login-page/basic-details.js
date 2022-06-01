@@ -23,9 +23,9 @@ const BasicDetails = (acc) => {
             <br />
             <div>
                 <input
-                    type="submit"
+                    type="button"
                     value="Continue"
-                    onClick= {() => {}}
+                    onClick= {acc.handleSubmit}
                 />
                 <NavLink to="/personal" className="title">
                     <input
