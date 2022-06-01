@@ -5,7 +5,6 @@ import Navbar from "../navbar/nav-bar";
 import { useState } from "react";
 import BasicDetails from "./basic-details";
 import PersonalDetails from "./personal-details";
-import addValues from "./middle";
 
 function App() {
     const navigate = useNavigate();
@@ -18,7 +17,7 @@ function App() {
         contact: "",
         proof: "",
     });
-
+    const [count_pass, setCount] = useState(0);
     const onChangeAccount = (e) => {
         setAccount({ ...account, [e.target.name]: e.target.value });
     };
@@ -32,10 +31,15 @@ function App() {
                 },
                 method: 'POST', body: JSON.stringify(account)
             }).then(function(response){
-                console.log(response.json());
-                return response.json();
-            });
+                setCount(response.json());
+            })
         }
+        getData();
+        if(count_pass === 0) {
+            navigate('/signup/personal');
+        } else {
+            alert("Username already in use");
+        }   
     }
 
     const handleSubmit = (e) => {
@@ -70,7 +74,7 @@ function App() {
                 <Route path="basic" element={<BasicDetails
                     account={account}
                     onChangeAccount={onChangeAccount}
-                    handleSubmit={handleSubmit}
+                    handleSubmit={userCheck}
                 />}
                 />
                 <Route path="personal" element={<PersonalDetails
