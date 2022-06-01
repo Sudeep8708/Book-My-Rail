@@ -22,7 +22,12 @@ const BasicDetails = (acc) => {
             />
             <br />
             <div>
-                <NavLink to="personal" className="title">
+                <input
+                    type="button"
+                    value="Continue"
+                    onClick= {acc.handleSubmit}
+                />
+                <NavLink to="/personal" className="title">
                     <input
                         type="button"
                         value="Continue"
