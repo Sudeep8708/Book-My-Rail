@@ -16,22 +16,24 @@ import Contact from "./contact.js";
 import Footer from './footer/footer';
 import BasicDetails from "./login-page/basic-details";
 import PersonalDetails from "./login-page/personal-details";
-import Card from "./ticket_view/card";
+import Ticketview from "./ticket_view/card";
 export default function Main() {  
   return (
     <>
     <Navbar/>
     <Routes>
       <Route path = "/" element = {<Plan_your_journey/>} />
-      <Route path = "booking" element = {<Book />}/>
-      <Route path = "trainschedule" element = {<Trainschedule/>}/>
+      {/* <Route path = "booking" element = {<Book />}/> */}
+      <Route path = "trainschedule/" element = {<Trainschedule/>}/>
+      <Route path = "trainschedule/ticketbooking" element = {<Book/>}/>
+      <Route path = "trainschedule/ticket" element = {<Ticketview/>}/>
       <Route path = "login" element = {<LoginDetails/>}/>
       <Route path = "signup/*" element = {<Signup/>} >
         <Route path = "basic" element = {<BasicDetails/>}/>
         <Route path = "personal" element = {<PersonalDetails/>}/>
       </Route>
       <Route path  ="/contact" element = {<Contact/>}/>
-      <Route path = "/ticket" element = {<Card/>}/>
+      {/* <Route path = "/ticket" element = {<Card/>}/> */}
       <Route path ="*" element = {<Four_not_four/>}/>
     </Routes>
     <Footer />

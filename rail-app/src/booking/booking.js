@@ -1,11 +1,9 @@
 import { useState } from "react";
-import "./bookPage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMultiply } from "@fortawesome/free-solid-svg-icons";
-import NavBar from "../navbar/nav-bar";
 import TrainDetail from "../train-schedule/train";
-//import Card from "./ticket_view/card.js";
+
 const TicketFare = (props) => {
     const count = props.count + 1;
     let fare = 195 * count;
@@ -70,14 +68,13 @@ const Booking = () => {
         passenger.forEach((item) => {
             console.log(item.name + item.gender + item.age + item.preference);
         });
-
     };
 
     return (
-        <>
-            <NavBar />
-            <div className="booking-section">
-                <TrainDetail />
+        <div className="booking-section">
+                <div className="container train-container">
+                    <TrainDetail />
+                </div>
                 <div className="container">
                     <p>Passenger details</p>
                     <form onSubmit={submitChange} id="passForm">
@@ -159,8 +156,7 @@ const Booking = () => {
                     </form>
                 </div>
                 <TicketFare count={count} />
-            </div>
-        </>
+            </div>  
     );
 };
 export default Booking;
