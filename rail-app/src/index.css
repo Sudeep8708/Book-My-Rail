@@ -6,6 +6,7 @@
     font-family: "PT Sans", sans-serif;
 }
 
+html,
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -13,7 +14,7 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: linear-gradient(to right, #ffffff, #9BA3EB);
+    background-image: linear-gradient(to right, #ffffff, #dbdffd);
 }
 
 code {
@@ -32,7 +33,7 @@ code {
 .container {
     margin: 2em;
     width: 80%;
-    background-image: linear-gradient(135deg, #e8ebff 50%, #fafaff, #e8ebff);
+    background-image: linear-gradient(135deg, #e8ebff, #fafaff, #e8ebff);
     box-shadow: 3px 3px 12px 1px #646fd4;
     border-radius: 5px;
     padding: 5px;
@@ -43,8 +44,6 @@ code {
     display: flex;
     flex-direction: column;
     align-items: space-around;
-    font-family: 'Poppins',sans-serif;
-    font-size: 1.2em;
 }
 
 .ticket {
@@ -70,36 +69,7 @@ code {
 
 .value-container {
     border-bottom: 2px solid black;
-    padding: 0.5em;
-    font-weight: bold;
-}
-
-.to-from {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid black;
-    font-weight: bold;
-}
-
-.to-from > div {
-    padding: 0.5em;
-}
-.class-container {
-    display: flex;
-    justify-content: space-around;
-}
-
-.class-container > div {
-    font-size: 0.8em;
-    border: 1px solid black;
-    padding: 1rem;
-    margin: 1.5rem;
-    width: 5rem;
-    box-shadow: 0 0 2px 1px;
-}
-
-.class-container > div:hover {
-    cursor: pointer;
+    padding: 0.5rem;
 }
 
 .plan-container {
@@ -127,7 +97,7 @@ code {
     font-family: "Poppins", monospace;
     font-size: 7rem;
     text-overflow: clip;
-    text-shadow: 1px 5px 7px #242f9b;
+    text-shadow: 0 5px 7px #242f9b;
 }
 
 /* nav bar */
@@ -136,6 +106,7 @@ html {
     margin: 0;
 }
 .nav-bar {
+    position: sticky;
     top: 0;
     padding: 1em;
     text-align: center;
@@ -249,21 +220,4 @@ div select {
 	cursor: pointer;
 }
 
-/* Footer */
-footer {
-    margin-top: 1.3em;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
-.social-media {
-    display: flex;
-}
-
-.social-media > div {
-    padding: 1em;
-    margin-top: 1em;
-}

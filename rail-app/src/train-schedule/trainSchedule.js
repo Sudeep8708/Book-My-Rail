@@ -1,14 +1,7 @@
-import TrainDetail from "./train";
 
-const TrainSchedule = () => {
-    return (
-        <div>
-            <div className="container train-container">
-                <TrainDetail />
-                <input type="submit" value="Book now" />
-            </div>
-        </div>
-    );
-};
+const TrainDetail = () => {
+    
 
-export default TrainSchedule;
+}
+
+export default TrainDetail

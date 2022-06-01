@@ -11,9 +11,9 @@ import TrainDetail from './train-schedule/train';
 import LoginDetails from './login-page/login'
 import Navbar from "./navbar/nav-bar.js"
 import Four_not_four from "./four_not_four.js"
-import Trainschedule from "./train-schedule/trainSchedule"
+import Trainschedule from "./train-schedule/train.js"
 import Contact from "./contact.js";
-import Footer from "./footer/footer"
+
 import BasicDetails from "./login-page/basic-details";
 import PersonalDetails from "./login-page/personal-details";
 import Card from "./ticket_view/card";
@@ -34,7 +34,7 @@ export default function Main() {
       <Route path = "/ticket" element = {<Card/>}/>
       <Route path ="*" element = {<Four_not_four/>}/>
     </Routes>
-    <Footer />
+    
     </>
     // <>
     // <LoginDetails />

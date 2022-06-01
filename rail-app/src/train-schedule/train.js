@@ -1,3 +1,4 @@
+import "./train-dt.css"
 import { useLocation } from "react-router-dom"
 
 
@@ -13,8 +14,8 @@ const TrainDetail = () => {
         class: ["Sitting", "Sleeper", "AC-Sleeper", "AC", "First"]
     }
     return (
-        <div>
-        <div className="value-container">{train.id} - {train.name}</div>
+        <div className="container train-container">
+            <div className="value-container">{train.id} - {train.name}</div>
             <div className="to-from">
                 <div>{train.from} {train.arrivalTime}</div>
                 <div>{train.to} {train.reachTime}</div>
