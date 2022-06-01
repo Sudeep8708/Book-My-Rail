@@ -1,40 +1,9 @@
 
 
-div input,select{
-	border-radius: 2px;
-	text-align: center;
-	height: 2em;
-	width: 18rem;
-	margin: 0.5em;
-	border: 2px solid black;
-}
 
-div select {
-	background-color: white;
-	height: 2.42em;
-}
 
-.linker {
-	color: rgb(37, 109, 234);
-	margin: 1em;
-}
 
-.linker:hover{
-	text-decoration: underline;
-	cursor: pointer;
-}
 
-input[type="submit"],input[type="button"] {
-	color: white;
-	background-color: rgb(2, 196, 2);;
-	height: 3em;
-	cursor: pointer;
-}
-
-input[type="submit"]:hover,input[type="button"]:hover{
-	background-color: rgb(38, 224, 38);
-	box-shadow: 0 0 5px 2px;
-}
 
 
 

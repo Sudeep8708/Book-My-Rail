@@ -1,43 +1,9 @@
-.personal-details {
-  width: 50%;
-  margin: 0.5em auto;
-  padding: 30px;
-  background-color:antiquewhite;
-  border-radius: 10px;
-  box-shadow: 0 0 5px 1px;
-}
 
-.personal-details > p {
-  text-align: center;
-  font-size: 2em;
-  border-bottom: 1px solid black;
-}
 
-.head_card{
-  margin:10px;
-  display:flex;
-  justify-content: space-around;
-}
 
-.title{
-  font-weight:bold;
-  font-size: 1.5em;
-}
 
-.title:hover{
-  border-bottom: 1px solid #18a5fd;
-  color: #18a5fd; 
-}
 
-.form-entry {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.2em;
-}
 
-.form-entry input {
-  font-size: 1rem;
-}
+
 
 

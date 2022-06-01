@@ -22,11 +22,6 @@ const BasicDetails = (acc) => {
             />
             <br />
             <div>
-                <input
-                    type="submit"
-                    value="Continue"
-                    onClick= {() => {}}
-                />
                 <NavLink to="personal" className="title">
                     <input
                         type="button"

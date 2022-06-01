@@ -60,11 +60,11 @@ function App() {
 
     return (
         <>
-            <div className="personal-details">
+            <div className="container acc-details">
                 <p>Create Your Account</p>
                 <div className="head_card">
-                    <NavLink to="basic" className="title">Basic Details</NavLink>
-                    <NavLink to="personal" className="title">Personal Details</NavLink>
+                    <NavLink to="basic" className="title link">Basic Details</NavLink>
+                    <NavLink to="personal" className="title link">Personal Details</NavLink>
                 </div>
                 <Routes>
                 <Route path="basic" element={<BasicDetails
