@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ReactSession } from 'react-client-session';
 import './index.css';
 //import App from './login-page/signup';
 import reportWebVitals from './reportWebVitals';
@@ -17,6 +18,7 @@ import Footer from './footer/footer';
 import BasicDetails from "./login-page/basic-details";
 import PersonalDetails from "./login-page/personal-details";
 import Ticketview from "./ticket_view/card";
+ReactSession.setStoreType("sessionStorage");
 export default function Main() {  
   return (
     <>

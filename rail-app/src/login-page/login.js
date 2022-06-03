@@ -1,7 +1,10 @@
 import FormField from "./formfield";
+import { ReactSession } from 'react-client-session';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
 import { NavLink,useNavigate} from "react-router-dom"
 import { useState } from "react";
+ReactSession.setStoreType("sessionStorage");
+// ReactSession.setStoreType("localStorage");
 
 const LoginDetails = () => {
     const navigate = useNavigate();
@@ -30,7 +33,8 @@ const LoginDetails = () => {
                 } else {
                     const pass = myjson[0]["password"];
                     if(account["password"] === pass) {
-                        navigate('/', {state:{"username": account["username"]}})
+                        ReactSession.set("username", account["username"]);
+                        navigate('/')
                     } else {
                         alert("Incorrect Password");
                     }
