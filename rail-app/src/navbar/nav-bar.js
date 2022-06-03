@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import img from "../img/logo.png";
-import "./nav.css";
+import img from "../img/Easy rail-logos_transparent.png";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {

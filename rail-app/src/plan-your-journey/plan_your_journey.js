@@ -3,13 +3,20 @@ import ResponsiveDatePickers from "./date_picker";
 import SelectTextFields from "./select";
 import ContainedButtons from "./button";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
 import Booking from "../booking/booking";
 
 const Plan_your_journey = () => {
+    const location = useLocation();
     const navigate = useNavigate();
+    
+    if(location.state != null){
+       const username = location.state.username;
+       console.log(username);
+    }
     const [obj, setObj] = useState({
+        username: "",
         from: "",
         to: "",
         date_picker: "",

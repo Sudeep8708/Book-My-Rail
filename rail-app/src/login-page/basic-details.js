@@ -5,17 +5,20 @@ const BasicDetails = (acc) => {
     return (
         <form className="form-entry" method="post">
             <FormField
+                name="username"
                 label="username"
                 type="text"
                 onChange={acc.onChangeAccount}
             />
             <FormField
+                name="email"
                 label="email"
                 type="email"
                 onChange={acc.onChangeAccount}
             />
             <br />
             <FormField
+                name="password"
                 label="password"
                 type="password"
                 onChange={acc.onChangeAccount}
