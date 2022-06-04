@@ -3,12 +3,20 @@ import ResponsiveDatePickers from "./date_picker";
 import SelectTextFields from "./select";
 import ContainedButtons from "./button";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { ReactSession }  from 'react-client-session';
 //import { useNavigate } from "react-router-dom";
 import Booking from "../booking/booking";
-
+ReactSession.setStoreType("sessionStorage");
 const Plan_your_journey = () => {
+    const username = ReactSession.get("username");
+    const location = useLocation();
     const navigate = useNavigate();
+    
+    // if(location.state != null){
+    //    const username = location.state.username;
+    // //    console.log(username);
+    // }
     const [obj, setObj] = useState({
         from: "",
         to: "",
@@ -26,7 +34,7 @@ const Plan_your_journey = () => {
 
     const handleSubmit = (e) => {
         console.log(obj);
-        fetch("http://localhost:5000/authenticate", {
+        fetch("http://localhost:5000/planYourJourney/trainSchedule", {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -34,9 +42,15 @@ const Plan_your_journey = () => {
             method: "POST",
             body: JSON.stringify(obj),
         }).then(function (response) {
-            console.log(response.json());
-        });
-        navigate("trainschedule", { state: obj });
+            return response.json();
+        }).then(function(myjson){
+            if(myjson["length"] === 0){
+                alert("No trains are available");
+            } else {
+                console.log(myjson);
+                navigate("trainschedule", { state: {location: obj, query: myjson} });
+            }
+        })
     };
     return (
         <div className="home-container">

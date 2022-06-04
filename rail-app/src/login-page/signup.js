@@ -16,8 +16,8 @@ function App() {
         age: 0,
         address: "",
         gender: "",
-        contact: 0,
-        proof: "",
+        mobile: 0,
+        aadhaar: "",
     });
     const [count_pass, setCount] = useState(0);
     const onChangeAccount = (e) => {
@@ -27,7 +27,7 @@ function App() {
     const userCheck = (e) => {
         e.preventDefault();
         const getData = () => {
-            fetch('http://localhost:5000/usercheck', { 
+            fetch('http://localhost:5000/signup/usercheck', { 
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -58,11 +58,11 @@ function App() {
         if(account["age"] < 18){
             alert("User has to be an adult");
         } else if(account["name"].length === 0 || account["email"].length === 0 || account["password"].length === 0
-        || account["address"].length === 0 || account["contact"].length === 0 || account["proof"].length === 0 || account["username"].length === 0) { 
+        || account["address"].length === 0 || account["mobile"].length === 0 || account["aadhaar"].length === 0 || account["username"].length === 0) { 
             alert("Fields cant be empty");
         } else{
             console.log(account);
-            fetch('http://localhost:5000/signup', { 
+            fetch('http://localhost:5000/signup/submit', { 
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
