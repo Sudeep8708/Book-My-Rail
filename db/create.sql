@@ -1,10 +1,11 @@
 create database if not exists rail;
 use rail;
--- drop table if exists passenger;
 drop table if exists fare_table;
 drop table if exists tickets;
+drop table if exists fare_tables;
 drop table if exists t_schedule;
 drop table if exists train_details;
+drop table if exists passenger;
 
 
 create table if not exists passenger(username varchar(25) primary key, aadhaar numeric unique not null, name varchar(25) not null, age numeric not null, gender char(1) not null, address varchar(50) not null, mobile numeric not null, password varchar(25) not null, email varchar(25) not null, check(age >= 18));
@@ -109,5 +110,7 @@ insert into fare values( "Coimbatore - CBE", "16859", 2500, 2000, 1000, 500);
 insert into fare values( "Kozhikode - CLD", "16859", 2750, 2200, 1100, 550); 
 insert into fare values( "Payyanur - PAY", "16859", 3000, 2400, 1200, 600); 
 insert into fare values( "Mangalore Central - MAQ", "16859", 3250, 2600, 1300, 650); 
-select * from train_details;
-select * from t_schedule;
+
+insert into passenger values ("Satty",4394309,"Sathya Naarayanaa",25,"M","Kalpakkam",9445446158,"sathya","satty@gmail.com");
+insert into passenger values ("Hothands",5994309,"Sudeep K",27,"M","Coimbatore",9445454158,"sudeep","sudeep@gmail.com");
+insert into passenger values ("mrHope",4394789,"Nitish K S",47,"M","Chennai",7200838028,"nitish","niti@gmail.com");

@@ -3,6 +3,7 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
     return (
@@ -21,6 +22,9 @@ const Footer = () => {
                 <div>
                     <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </div>
+            </div>
+            <div>
+                <FontAwesomeIcon icon={faPhone} size="2x" /> 7200838025
             </div>
         </footer>
     );
