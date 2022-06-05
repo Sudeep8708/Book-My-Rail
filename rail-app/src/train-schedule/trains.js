@@ -18,10 +18,14 @@ const TrainDetail = (props) => {
             navigate("/login");
         }
     };
+    const changeClass = (e) => {
+        console.log(e.target.name);
+    }
+
     return (
         <>
             {trainDetail.map((train) => (
-               <Train key={train.train_no} train={train} handleSubmit={handleSubmit}/>
+               <Train key={train.train_no} train={train} handleSubmit={handleSubmit} changeClass={changeClass}/>
             ))}
         </>
     );

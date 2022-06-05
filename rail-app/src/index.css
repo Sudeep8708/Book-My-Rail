@@ -119,21 +119,23 @@ code {
     justify-content: space-around;
 }
 
-.class-container > button {
+.class-container > input[type="button"] {
     font-size: 0.8em;
     border: 1px solid black;
-    padding: 1rem;
     margin: 1.5rem;
-    width: 7rem;
+    width: 8rem;
+    height: 4rem;
     box-shadow: 0 0 2px 1px;
-    background-color: whitesmoke;
+    background-color: #f9f9ff;
+    color: #242f9b;
 }
 
-.class-container > button:hover {
+.class-container > input[type="button"]:hover {
     cursor: pointer;
+    background-color: #f9f9ff;
 }
 
-.class-container >button:focus {
+.class-container >input[type="button"]:focus {
     border: 3px solid blue ;
     background-color: #ccd8f6;
 }
