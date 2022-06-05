@@ -34,7 +34,6 @@ const Plan_your_journey = () => {
     const onChangeDate = (o) => {
         setObj({ ...obj, [o.name]: o.value });
     };
-
     const handleSubmit = (e) => {
         console.log(obj);
         fetch("http://localhost:5000/planYourJourney/trainSchedule", {
@@ -54,7 +53,7 @@ const Plan_your_journey = () => {
                 } else {
                     console.log(myjson);
                     navigate("trainschedule", {
-                        state: { location: obj, query: myjson },
+                        state: { location: obj, query: myjson},
                     });
                 }
             });
