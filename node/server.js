@@ -46,6 +46,13 @@ app.post('/planYourJourney/trainSchedule', (req, res) => {
     })
 })
 
+app.post('/planYourJourney/stationName', (req, res) => {
+    const q = 'select distinct(station_name) from t_schedule'
+    con.query(q, function(err, result) {
+        if(err) throw err;
+        res.send(result);
+    })
+})
 app.listen(5000, () => {
     console.log("connected")
 });

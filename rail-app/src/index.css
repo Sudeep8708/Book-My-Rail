@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=PT+Sans:ital@0;1&family=Poppins:wght@100;200;300&family=Roboto+Mono:wght@100;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=PT+Sans:ital@0;1&family=Poppins:wght@100;200;300&family=Roboto+Mono:wght@100;500&display=swap");
 
 * {
     margin: 0;
@@ -13,7 +13,7 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: linear-gradient(to right, #ffffff, #9BA3EB);
+    background-image: linear-gradient(to right, #ffffff, #9ba3eb);
 }
 
 code {
@@ -43,7 +43,7 @@ code {
     display: flex;
     flex-direction: column;
     align-items: space-around;
-    font-family: 'Poppins',sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 1.2em;
 }
 
@@ -74,14 +74,8 @@ code {
     border-bottom: 2px solid black;
 }
 
-.passenger-container  div {
+.passenger-container div {
     padding: 1em 0 1em 0;
-}
-
-.value-container {
-    border-bottom: 2px solid black;
-    padding: 0.5em;
-    font-weight: bold;
 }
 
 .to-from {
@@ -94,6 +88,13 @@ code {
 .to-from > div {
     padding: 0.5em;
 }
+
+.value-container {
+    border-bottom: 2px solid black;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
 .class-container {
     display: flex;
     justify-content: space-around;
@@ -128,7 +129,7 @@ code {
 
 .plan-container h1 {
     margin-top: 0.3em;
-    font-family: 'Roboto mono',monospace;
+    font-family: "Roboto mono", monospace;
     font-weight: 400;
 }
 
@@ -146,35 +147,43 @@ code {
     text-shadow: 1px 5px 7px #242f9b;
 }
 
-/* nav bar */
-body,
-html {
-    margin: 0;
+.dashboard {
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.dashboard > div {
+    margin-top: 2em;
+}
+
+/* nav bar */
+
 .nav-bar {
     top: 0;
-    padding: 1em;
     text-align: center;
-    margin-bottom: 1rem;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+}
+.nav-menu {
+    display: block;
+}
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+}
+.link {
+    padding: 0;
 }
 
 .img-size {
     top: 0;
     left: 0;
-    width: 10em;
-    height: 10em;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: space-around;
-}
-
-.nav-links > div {
-    margin-right: 1em;
-    padding: 1em 0 0 1em;
+    width: 7em;
+    height: 7em;
 }
 
 .link {
@@ -189,7 +198,26 @@ html {
     border-bottom: 1px solid #242f9b;
 }
 
-/*  */
+@media screen and (min-width: 400px){
+    .nav-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav-links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .nav-menu {
+        display: none;
+    }
+    .nav-links > div {
+        margin-right: 1em;
+        padding: 1em 0 0 1em;
+    }
+}
+
+/* Login - page */
 .acc-details {
     width: 50%;
     margin: 0.5em auto;
@@ -220,49 +248,59 @@ html {
 
 .form-entry input {
     font-size: 1rem;
+    width: fit-content;
 }
 
-input[type="submit"],input[type="button"] {
-	color: white;
-	background-color: #334155;
-	height: 3em;
-	border:none;
-	cursor: pointer;
+@media screen and (min-width: 400px){
+    .form-entry input {
+        width: 20rem;
+    }
 }
 
-input[type="submit"]:hover,input[type="button"]:hover{
-	background-color: #495e7b;
-	box-shadow: 0 0 5px 2px;
+input[type="submit"],
+input[type="button"] {
+    padding: 0.3em;
+    color: white;
+    background-color: #334155;
+    height: 3em;
+    border: none;
+    cursor: pointer;
 }
 
-div input,select{
-    font-family: 'PT Sans',sans-serif;
-	border-radius: 5px;
-	text-align: center;
-	height: 2em;
-	width: 18rem;
-	margin: 0.5em;
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #495e7b;
+    box-shadow: 0 0 5px 2px;
+}
+
+div input,
+select {
+    font-family: "PT Sans", sans-serif;
+    border-radius: 5px;
+    text-align: center;
+    height: 2em;
+    width: 18rem;
+    margin: 0.5em;
     border: 1px inset black;
 }
 
 div input:focus {
-    border-bottom: 3px solid #242f9b;   
+    border-bottom: 3px solid #242f9b;
 }
 
-
 div select {
-	background-color: white;
-	height: 2.42em;
+    background-color: white;
+    height: 2.42em;
 }
 
 .linker {
-	color: rgb(37, 109, 234);
-	margin: 1em;
+    color: rgb(37, 109, 234);
+    margin: 1em;
 }
 
-.linker:hover{
-	text-decoration: underline;
-	cursor: pointer;
+.linker:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* Footer */
