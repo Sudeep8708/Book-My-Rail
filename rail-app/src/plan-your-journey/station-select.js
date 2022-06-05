@@ -1,8 +1,7 @@
 import {useState} from "react";
-
 const Result_fetch = () => {
-	const [result, setResult] = useState({});
-	const fetch_func = () => {
+	const [result, setResult] = useState([{}]);
+	const fetch_func = async () => {
 		fetch("http://localhost:5000/planYourJourney/stationName", {
 				headers: {
 					Accept: "application/json",
@@ -18,19 +17,19 @@ const Result_fetch = () => {
 	fetch_func();
 	return result;
 }
+
 const StationSelect = (props) => {
-	let arr = ['MAS','TBM','TPJ','POY','TVC']
+	const result = Result_fetch()
 	return (
 		<>
 		<label>{props.name}</label>
 		<input name={props.name} list={props.name}/>
 		<datalist id={props.name}>
-			{/* {
-				result.map((item) => {
-					console.log(item)
+			{
+				 result.map((item) => {
 					return <option key={item.station_name} value={item.station_name}	/> 
-				})
-			} */}
+				 })
+			}
 		</datalist>
 		</>
 	)

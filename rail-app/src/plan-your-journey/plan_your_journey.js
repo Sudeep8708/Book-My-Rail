@@ -9,6 +9,7 @@ import { ReactSession } from "react-client-session";
 import Booking from "../booking/booking";
 import StationSelect from "./station-select";
 ReactSession.setStoreType("sessionStorage");
+
 const Plan_your_journey = () => {
     const username = ReactSession.get("username");
     const location = useLocation();
@@ -26,19 +27,6 @@ const Plan_your_journey = () => {
             select: "",
         };
     });
-    const [result, setResult] = useState({});
-            fetch("http://localhost:5000/planYourJourney/stationName", {
-                    headers: {
-                        Accept: "application/json",
-                        "Content-type": "application/json",
-                    },
-                    method: "POST",
-                }).then(function(response) {
-                    return response.json();
-                }).then(function(myjson){
-                    setResult(myjson);
-                })
-    console.log(result)
     const onChangeObj = (e) => {
         setObj({ ...obj, [e.target.name]: e.target.value });
     };
@@ -77,10 +65,10 @@ const Plan_your_journey = () => {
             <div className="container plan-container">
                 <h1> Book Tickets </h1>
                 <div>
-                    <StationSelect name="from" />
+                    <StationSelect name="from"/>
                 </div>
                 <div>
-                    <StationSelect name="to"/>
+                    <StationSelect name="to" />
                     {/* <InputWithIcon label="to" id="to" onchange={onChangeObj} /> */}
                 </div>
                 <div>
