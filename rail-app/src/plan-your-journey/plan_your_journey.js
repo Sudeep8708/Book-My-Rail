@@ -34,7 +34,7 @@ const Plan_your_journey = () => {
     const onChangeDate = (o) => {
         setObj({ ...obj, [o.name]: o.value });
     };
-
+    const [tclass, setClass] = useState({});
     const handleSubmit = (e) => {
         console.log(obj);
         fetch("http://localhost:5000/planYourJourney/trainSchedule", {
@@ -49,12 +49,28 @@ const Plan_your_journey = () => {
                 return response.json();
             })
             .then(function (myjson) {
+                
+            const trainClass = myjson.map((i) => {
+                if(i.FC_booked < i.FC_total){
+                    setClass({... "FC"});
+                }
+                if(i.AC_booked < i.AC_total){
+                    setClass({... "AC"});
+                }
+                if(i.ST_booked < i.ST_total){
+                    setClass({... "ST"});
+                }
+                if(i.SL_booked < i.SL_total){
+                    setClass({... "SL"});
+                }
+                return tclass;
+            });
                 if (myjson["length"] === 0) {
                     alert("No trains are available");
                 } else {
                     console.log(myjson);
                     navigate("trainschedule", {
-                        state: { location: obj, query: myjson },
+                        state: { location: obj, query: myjson, tclass: trainClass},
                     });
                 }
             });

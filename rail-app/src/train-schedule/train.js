@@ -1,9 +1,12 @@
+import {useState} from "react";
 const TrainDetail = (props) => {
     const trainDetail = props.trainDetail;
     const userFetch = props.userFetch;
+    const trainClass = props.tclass;
     console.log(userFetch.from);
     // console.log("The Train Details to be displayed: ",props.train_det);
- 
+    
+    console.log(trainClass);
     return (   
         <> 
         {   
@@ -16,6 +19,7 @@ const TrainDetail = (props) => {
             </div>
              {/* <div className="class-container">
                     {
+                        
                         trainDetail.map((item) => {
                             return (
                                 <div>
