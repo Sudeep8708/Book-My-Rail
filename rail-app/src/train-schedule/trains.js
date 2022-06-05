@@ -21,7 +21,7 @@ const TrainDetail = (props) => {
     return (
         <>
             {trainDetail.map((train) => (
-               <Train train={train} handleSubmit={handleSubmit}/>
+               <Train key={train.train_no} train={train} handleSubmit={handleSubmit}/>
             ))}
         </>
     );
