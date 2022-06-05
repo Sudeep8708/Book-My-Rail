@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMultiply } from "@fortawesome/free-solid-svg-icons";
+import {useLocation} from "react-router-dom"
 import TrainDetail from "../train-schedule/train";
 
 const TicketFare = (props) => {
@@ -17,6 +18,9 @@ const TicketFare = (props) => {
 };
 
 const Booking = () => {
+    const location = useLocation();
+    const trainDetail = location.state.trainDetail;
+    const userFetch = location.state.userFetch;
     const profile = [
         {
             name: "",
@@ -72,9 +76,9 @@ const Booking = () => {
 
     return (
         <div className="booking-section">
-                <div className="container train-container">
+                {/* <div className="container train-container">
                     <TrainDetail />
-                </div>
+                </div> */}
                 <div className="container passenger-container">
                     <p>Passenger details</p>
                     <form onSubmit={submitChange} id="passForm">
