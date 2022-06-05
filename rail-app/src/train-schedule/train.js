@@ -1,35 +1,4 @@
-import { useLocation } from "react-router-dom"
-
-
 const TrainDetail = (props) => {
-    const location = useLocation();
-    // const train = {
-    //     id: "12345",
-    //     name: "Vaigai",
-    //     from: "Chennai-Egmore",
-    //     arrivalTime: "10:00",
-    //     to: "Thiruchirapalli",
-    //     reachTime: "18:00",
-    //     class: ["Sitting", "Sleeper", "AC-Sleeper", "AC", "First"]
-    // }
-
-    // const trainDetail = [{
-    //     id: "12345",
-    //     name: "Vaigai",
-    //     from: "Chennai-Egmore",
-    //     arrivalTime: "10:00",
-    //     to: "Thiruchirapalli",
-    //     reachTime: "18:00",
-    //     class: ["Sitting", "Sleeper", "AC-Sleeper", "AC", "First"]
-    // },
-    //     {id: "12346",
-    //     name: "Vaigai - 2",
-    //     from: "Chennai-Egmore",
-    //     arrivalTime: "11:00",
-    //     to: "Thiruchirapalli",
-    //     reachTime: "18:00",
-    //     class: ["Sitting", "Sleeper", "AC-Sleeper", "AC", "First"]}
-    // ]
     const trainDetail = props.trainDetail;
     const userFetch = props.userFetch;
     console.log(userFetch.from);
