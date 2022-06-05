@@ -11,7 +11,7 @@ const TrainDetail = (props) => {
     // console.log("The Train Details to be displayed: ",props.train_det);
     const handleSubmit = () => {
         if(username) {
-            navigate('/booking')
+            navigate('/booking', {state: props})
         } else {
             alert("Login first");
             navigate('/login')
