@@ -5,29 +5,25 @@ import MenuItem from '@mui/material/MenuItem';
 
 const classes = [
   {
-    value: '1A',
-    label: 'AC FIRST CLASS',
+    value: 'FC',
+    label: 'FIRST CLASS',
   },
   {
-    value: '2A',
-    label: 'AC 2 TIER',
+    value: 'AC',
+    label: 'AC',
   },
   {
-    value: '3A',
-    label: 'AC 3 TIER',
-  },
-  {
-    value: '3E',
-    label: 'AC 3 ECONOMY',
+    value: 'ST',
+    label: 'Sitting',
   },
   {
     value: 'SL',
-    label: 'SLEEPER',
+    label: 'Sleeper',
   },
 ];
 
 export default function SelectTextFields(props) {
-  const [class_t, setclass_t] = React.useState('1A');
+  const [class_t, setclass_t] = React.useState('ST');
 
   const handleChange = (event) => {
     setclass_t(event.target.value);

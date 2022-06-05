@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=PT+Sans:ital@0;1&family=Poppins:wght@100;200;300&family=Roboto+Mono:wght@100;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=PT+Sans:ital@0;1&family=Poppins:wght@100;200;300&family=Roboto+Mono:wght@100;500&display=swap");
 
 * {
     margin: 0;
@@ -6,7 +6,6 @@
     font-family: "PT Sans", sans-serif;
 }
 
-html,
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -14,7 +13,7 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: linear-gradient(to right, #ffffff, #dbdffd);
+    background-image: linear-gradient(to right, #ffffff, #9ba3eb);
 }
 
 code {
@@ -24,7 +23,7 @@ code {
 
 .booking-section {
     position: relative;
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-content: flex-start;
@@ -33,7 +32,7 @@ code {
 .container {
     margin: 2em;
     width: 80%;
-    background-image: linear-gradient(135deg, #e8ebff, #fafaff, #e8ebff);
+    background-image: linear-gradient(135deg, #e8ebff 50%, #fafaff, #e8ebff);
     box-shadow: 3px 3px 12px 1px #646fd4;
     border-radius: 5px;
     padding: 5px;
@@ -44,11 +43,13 @@ code {
     display: flex;
     flex-direction: column;
     align-items: space-around;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2em;
 }
 
 .ticket {
     position: fixed;
-    top: 4.5rem;
+    top: 9rem;
     right: 2.5rem;
     width: 30%;
     padding: 10px;
@@ -61,15 +62,55 @@ code {
     font-size: 1.2rem;
 }
 
+.passenger-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .passenger-container > p {
     font-size: 1.8rem;
-    font-weight: 800;
+    padding: 0.5em;
+    font-weight: 500;
     border-bottom: 2px solid black;
+}
+
+.passenger-container div {
+    padding: 1em 0 1em 0;
+}
+
+.to-from {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+.to-from > div {
+    padding: 0.5em;
 }
 
 .value-container {
     border-bottom: 2px solid black;
-    padding: 0.5rem;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+.class-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.class-container > div {
+    font-size: 0.8em;
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1.5rem;
+    width: 5rem;
+    box-shadow: 0 0 2px 1px;
+}
+
+.class-container > div:hover {
+    cursor: pointer;
 }
 
 .plan-container {
@@ -83,7 +124,13 @@ code {
 }
 
 .plan-container div {
-    margin-top: 1em;
+    margin: 0.4em 0 0.5em 0;
+}
+
+.plan-container h1 {
+    margin-top: 0.3em;
+    font-family: "Roboto mono", monospace;
+    font-weight: 400;
 }
 
 .home-container {
@@ -97,39 +144,46 @@ code {
     font-family: "Poppins", monospace;
     font-size: 7rem;
     text-overflow: clip;
-    text-shadow: 0 5px 7px #242f9b;
+    text-shadow: 1px 5px 7px #242f9b;
+}
+
+.dashboard {
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard > div {
+    margin-top: 2em;
 }
 
 /* nav bar */
-body,
-html {
-    margin: 0;
-}
+
 .nav-bar {
-    position: sticky;
     top: 0;
-    padding: 1em;
     text-align: center;
-    margin-bottom: 1rem;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+}
+.nav-menu {
+    display: block;
+}
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+}
+.link {
+    padding: 0;
 }
 
 .img-size {
     top: 0;
     left: 0;
-    width: 5em;
-    height: 5em;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: space-around;
-}
-
-.nav-links > div {
-    margin-right: 1em;
-    padding: 1em 0 0 1em;
+    width: 7em;
+    height: 7em;
 }
 
 .link {
@@ -144,7 +198,26 @@ html {
     border-bottom: 1px solid #242f9b;
 }
 
-/*  */
+@media screen and (min-width: 400px){
+    .nav-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav-links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .nav-menu {
+        display: none;
+    }
+    .nav-links > div {
+        margin-right: 1em;
+        padding: 1em 0 0 1em;
+    }
+}
+
+/* Login - page */
 .acc-details {
     width: 50%;
     margin: 0.5em auto;
@@ -175,49 +248,76 @@ html {
 
 .form-entry input {
     font-size: 1rem;
+    width: fit-content;
 }
 
-input[type="submit"],input[type="button"] {
-	color: white;
-	background-color: #334155;
-	height: 3em;
-	border:none;
-	cursor: pointer;
+@media screen and (min-width: 400px){
+    .form-entry input {
+        width: 20rem;
+    }
 }
 
-input[type="submit"]:hover,input[type="button"]:hover{
-	background-color: #495e7b;
-	box-shadow: 0 0 5px 2px;
+input[type="submit"],
+input[type="button"] {
+    padding: 0.3em;
+    color: white;
+    background-color: #334155;
+    height: 3em;
+    border: none;
+    cursor: pointer;
 }
 
-div input,select{
-    font-family: 'PT Sans',sans-serif;
-	border-radius: 5px;
-	text-align: center;
-	height: 2em;
-	width: 18rem;
-	margin: 0.5em;
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #495e7b;
+    box-shadow: 0 0 5px 2px;
+}
+
+div input,
+select {
+    font-family: "PT Sans", sans-serif;
+    border-radius: 5px;
+    text-align: center;
+    height: 2em;
+    width: 18rem;
+    margin: 0.5em;
     border: 1px inset black;
 }
 
 div input:focus {
-    border-bottom: 3px solid #242f9b;   
+    border-bottom: 3px solid #242f9b;
 }
 
-
 div select {
-	background-color: white;
-	height: 2.42em;
+    background-color: white;
+    height: 2.42em;
 }
 
 .linker {
-	color: rgb(37, 109, 234);
-	margin: 1em;
+    color: rgb(37, 109, 234);
+    margin: 1em;
 }
 
-.linker:hover{
-	text-decoration: underline;
-	cursor: pointer;
+.linker:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
+/* Footer */
+footer {
+    margin-top: 1.3em;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+.social-media {
+    display: flex;
+}
+
+.social-media > div {
+    padding: 1em;
+    margin-top: 1em;
+}

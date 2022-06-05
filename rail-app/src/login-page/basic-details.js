@@ -3,19 +3,22 @@ import FormField from "./formfield";
 const BasicDetails = (acc) => {
     const account = acc.account;
     return (
-        <form className="form-entry">
+        <form className="form-entry" method="post">
             <FormField
-                label="name"
+                name="username"
+                label="username"
                 type="text"
                 onChange={acc.onChangeAccount}
             />
             <FormField
+                name="email"
                 label="email"
                 type="email"
                 onChange={acc.onChangeAccount}
             />
             <br />
             <FormField
+                name="password"
                 label="password"
                 type="password"
                 onChange={acc.onChangeAccount}
@@ -23,17 +26,17 @@ const BasicDetails = (acc) => {
             <br />
             <div>
                 <input
-                    type="button"
+                    type="submit"
                     value="Continue"
                     onClick= {acc.handleSubmit}
                 />
-                <NavLink to="/personal" className="title">
+                {/* <NavLink to="/personal" className="title">
                     <input
                         type="button"
                         value="Continue"
                         onClick= {() => {}}
                     />
-                </NavLink>
+                </NavLink> */}
             </div>
         </form>
     );

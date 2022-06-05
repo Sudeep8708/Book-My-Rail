@@ -1,11 +1,9 @@
 import { useState } from "react";
-import "./bookPage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMultiply } from "@fortawesome/free-solid-svg-icons";
-import NavBar from "../navbar/nav-bar";
 import TrainDetail from "../train-schedule/train";
-//import Card from "./ticket_view/card.js";
+
 const TicketFare = (props) => {
     const count = props.count + 1;
     let fare = 195 * count;
@@ -70,22 +68,21 @@ const Booking = () => {
         passenger.forEach((item) => {
             console.log(item.name + item.gender + item.age + item.preference);
         });
-
     };
 
     return (
-        <>
-            <NavBar />
-            <div className="booking-section">
-                <TrainDetail />
-                <div className="container">
+        <div className="booking-section">
+                <div className="container train-container">
+                    <TrainDetail />
+                </div>
+                <div className="container passenger-container">
                     <p>Passenger details</p>
                     <form onSubmit={submitChange} id="passForm">
                         {
                             // console.log(typeof(passenger));
                             passenger.map((item, i) => {
                                 return (
-                                    <div id={i}>
+                                    <div key={i}>
                                         <p>Passenger {i + 1}</p>
                                         <input
                                             name="name"
@@ -143,14 +140,14 @@ const Booking = () => {
                                 );
                             })
                         }
-                        <div className="linker" onClick={addPassenger}>
+                        <span className="linker" onClick={addPassenger}>
                             <FontAwesomeIcon icon={faPlus} size="1x" /> Add a
                             passenger
-                        </div>
-                        <div className="linker" onClick={removePassenger}>
+                        </span>
+                        <span className="linker" onClick={removePassenger}>
                             <FontAwesomeIcon icon={faMultiply} size="1x" />{" "}
                             Remove a Passenger
-                        </div>
+                        </span>
                         <input
                             type="submit"
                             value="Continue"
@@ -159,8 +156,7 @@ const Booking = () => {
                     </form>
                 </div>
                 <TicketFare count={count} />
-            </div>
-        </>
+            </div>  
     );
 };
 export default Booking;
