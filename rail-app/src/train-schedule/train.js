@@ -1,12 +1,22 @@
-import {useState} from "react";
+import { ReactSession } from "react-client-session";
+import {useNavigate} from "react-router-dom"
+ReactSession.setStoreType("sessionStorage");
+
 const TrainDetail = (props) => {
     const trainDetail = props.trainDetail;
     const userFetch = props.userFetch;
-    const trainClass = props.tclass;
+    const navigate = useNavigate();
+    const username = ReactSession.get("username");
     console.log(userFetch.from);
     // console.log("The Train Details to be displayed: ",props.train_det);
-    
-    console.log(trainClass);
+    const handleSubmit = () => {
+        if(username) {
+            navigate('/booking')
+        } else {
+            alert("Login first");
+            navigate('/login')
+        }
+    }
     return (   
         <> 
         {   
@@ -17,18 +27,29 @@ const TrainDetail = (props) => {
                 <div>{train.from_station} - {train.arrival}</div>
                 <div>{train.to_station} - {train.departure}</div>
             </div>
-             {/* <div className="class-container">
+              <div className="class-container">
                     {
-                        
                         trainDetail.map((item) => {
                             return (
+                                <>
                                 <div>
-                                    {item}
+                                    First Class: {item.FC_total-item.FC_booked}
                                 </div>
+                                <div>
+                                AC Class: {item.AC_total-item.AC_booked}
+                                </div>
+                                <div>
+                                Sitting: {item.ST_total-item.ST_booked}
+                                </div>
+                                <div>
+                                Sleeper: {item.SL_total-item.SL_booked}
+                                </div>
+                                </>
                             )
                         })
                     }
-            </div>  */}
+            </div>  
+            <input type="submit" value="Book now" onClick={handleSubmit} />
         </div>
         )
         }

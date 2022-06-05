@@ -18,9 +18,6 @@ const TrainSchedule = () => {
             {/* <Plan_your_journey /> */}
             <div className="container train-container">
                 <TrainDetail userFetch={userFetch} trainDetail={trainDetail}/>
-            <input type="submit" value="Book now" onClick={()=>{
-                navigate('ticketbooking');
-            }} />
             </div>
         </div>
     );
