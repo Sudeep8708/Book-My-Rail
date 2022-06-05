@@ -10,9 +10,9 @@ const TrainDetail = (props) => {
     const username = ReactSession.get("username");
     console.log(userFetch.from);
     // console.log("The Train Details to be displayed: ",props.train_det);
-    const handleSubmit = () => {
+    const handleSubmit = (t, u) => {
         if (username) {
-            navigate("/booking");
+            navigate("/booking", {state: {trainDetail: t, userFetch: u}});
         } else {
             alert("Login first");
             navigate("/login");
@@ -21,7 +21,7 @@ const TrainDetail = (props) => {
     return (
         <>
             {trainDetail.map((train) => (
-               <Train key={train.train_no} train={train} handleSubmit={handleSubmit}/>
+               <Train key={train.train_no} train={train} userFetch={userFetch} handleSubmit={handleSubmit}/>
             ))}
         </>
     );

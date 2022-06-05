@@ -1,4 +1,4 @@
-export default function Train({ train, handleSubmit }) {
+export default function Train({ train, userFetch, handleSubmit }) {
     return (
         <div className="container">
             <div className="value-container">
@@ -18,7 +18,7 @@ export default function Train({ train, handleSubmit }) {
                 <button>Sitting: {train.ST_total - train.ST_booked}</button>
                 <button>Sleeper: {train.SL_total - train.SL_booked}</button>
             </div>
-            <input type="submit" value="Book now" onClick={handleSubmit} />
+            <input type="submit" value="Book now" onClick={handleSubmit(train, userFetch)} />
         </div>
     );
 }

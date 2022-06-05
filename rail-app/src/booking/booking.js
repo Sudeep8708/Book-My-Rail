@@ -2,7 +2,8 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMultiply } from "@fortawesome/free-solid-svg-icons";
-import {useLocation} from "react-router-dom"
+import {useLocation} from "react-router-dom";
+import {useEffect} from "react";
 import TrainDetail from "../train-schedule/train";
 
 const TicketFare = (props) => {
@@ -21,6 +22,30 @@ const Booking = () => {
     const location = useLocation();
     const trainDetail = location.state.trainDetail;
     const userFetch = location.state.userFetch;
+    const obj = {"train_no": trainDetail.train_no, "from": trainDetail.from_station, "to": trainDetail.to_station, "tclass": tclass};
+    console.log(trainDetail, userFetch);
+    useEffect(() => {
+        fetch("http://localhost:5000/booking/fareCalculation", {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(obj),
+        }).then(function (response) {
+                return response.json();
+            })
+            .then(function (myjson) {
+                if (myjson["length"] === 0) {
+                    alert("No trains are available");
+                } else {
+                    console.log(myjson);
+                    navigate("trainschedule", {
+                        state: { location: obj, query: myjson},
+                    });
+                }
+            });
+    }, [])
     const profile = [
         {
             name: "",
