@@ -65,14 +65,14 @@ const Plan_your_journey = () => {
             <div className="container plan-container">
                 <h1> Book Tickets </h1>
                 <div>
-                    <StationSelect name="from"/>
+                    <StationSelect name="from" onchange={onChangeObj}/>
                 </div>
                 <div>
-                    <StationSelect name="to" />
+                    <StationSelect name="to" onchange={onChangeObj}/>
                     {/* <InputWithIcon label="to" id="to" onchange={onChangeObj} /> */}
                 </div>
                 <div>
-                    <ResponsiveDatePickers onchange={onChangeDate} />
+                    <ResponsiveDatePickers onchange={onChangeObj} />
                 </div>
                 <div>
                     <SelectTextFields onchange={onChangeObj} />

@@ -23,7 +23,7 @@ const StationSelect = (props) => {
 	return (
 		<>
 		<label>{props.name}</label>
-		<input name={props.name} list={props.name}/>
+		<input name={props.name} list={props.name} onChange={props.onchange}/>
 		<datalist id={props.name}>
 			{
 				 result.map((item) => {
