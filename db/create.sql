@@ -1,8 +1,7 @@
 create database if not exists rail;
 use rail;
-drop table if exists fare_table;
+drop table if exists fare;
 drop table if exists tickets;
-drop table if exists fare_tables;
 drop table if exists t_schedule;
 drop table if exists train_details;
 drop table if exists passenger;
@@ -11,7 +10,7 @@ drop table if exists passenger;
 create table if not exists passenger(username varchar(25) primary key, aadhaar numeric unique not null, name varchar(25) not null, age numeric not null, gender char(1) not null, address varchar(50) not null, mobile numeric not null, password varchar(25) not null, email varchar(25) not null, check(age >= 18));
 create table if not exists train_details(train_no varchar(25) primary key, train_name varchar(25) not null, from_station varchar(25) not null, to_station varchar(25) not null, total_coach numeric not null default 4, total_seats numeric not null, booked_seats numeric not null default 0, FC_total numeric not null, FC_booked numeric not null default 0, AC_total numeric not null, AC_booked numeric not null default 0, ST_total numeric not null, ST_booked numeric not null default 0, SL_total numeric not null, SL_booked numeric not null default 0, check(total_seats >= booked_seats), check(FC_total >= FC_booked), check(AC_total >= AC_booked), check(ST_total >= ST_booked), check(SL_total >= SL_booked));
 create table if not exists fare(station_id varchar(25) not null, train_no varchar(25) not null, FC_fare numeric not null, AC_fare numeric not null, ST_fare numeric not null, SL_fare numeric not null, foreign key (train_no) references train_details(train_no));
-create table if not exists tickets(ticket_no varchar(25) primary key, username varchar(25), profile_name varchar(25) not null, age numeric not null, gender char(1) not null, mobile numeric not null, date_ date not null, train_no varchar(25) not null, coach_no varchar(25) not null, seat_no numeric not null, from_station varchar(25) not null, to_station varchar(25) not null, fare numeric not null, foreign key (train_no) references train_details(train_no));
+create table if not exists tickets(ticket_no varchar(25), username varchar(25), profile_name varchar(25) not null, age numeric not null, gender char(1) not null, mobile numeric not null, date date not null, train_no varchar(25) not null, coach_no varchar(25) not null, seat_no numeric not null, from_station varchar(25) not null, to_station varchar(25) not null, fare numeric not null, foreign key (train_no) references train_details(train_no));
 create table if not exists t_schedule(station_name varchar(25) not null, platform_no numeric not null, train_no varchar(25) not null, arrival time not null, departure time not null, foreign key (train_no) references train_details(train_no));
 
 insert into train_details values("12163", "Chennai Express", "Delhi - DLI", "Chennai Central - MAS", 8, 300, 0, 50, 0, 50, 0, 100, 0, 100, 0);
@@ -114,3 +113,7 @@ insert into fare values( "Mangalore Central - MAQ", "16859", 3250, 2600, 1300, 6
 insert into passenger values ("Satty",4394309,"Sathya Naarayanaa",25,"M","Kalpakkam",9445446158,"sathya","satty@gmail.com");
 insert into passenger values ("Hothands",5994309,"Sudeep K",27,"M","Coimbatore",9445454158,"sudeep","sudeep@gmail.com");
 insert into passenger values ("mrHope",4394789,"Nitish K S",47,"M","Chennai",7200838028,"nitish","niti@gmail.com");
+
+insert into tickets values ("12345","mrHope","Janavarshini",18,'F',7200838025,"2022-06-06","16859","Sitting",50,"Trichy - TPJ","Karur - KRR",50);
+insert into tickets values ("12345","mrHope","Nitish K S",47,'M',7200838025,"2022-06-06","16859","Sitting",51,"Trichy - TPJ","Karur - KRR",50);
+insert into tickets values ("12355","mrHope","Sathya Naarayanaa",25,'M',7200838025,"2022-06-07","16859","Sitting",50,"Trichy - TPJ","Karur - KRR",50);
