@@ -1,0 +1,54 @@
+.usr_pnr{
+
+    width: 40%;
+    margin: auto;
+    background-image: linear-gradient(135deg, #e8ebff 50%, #fafaff, #e8ebff);
+    box-shadow: 3px 3px 12px 1px #646fd4;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.route {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.line{
+    width:0.45em;
+    height:5rem;
+    background-color:lightblue;
+    margin-bottom: 0.5em;
+}
+
+.circle{
+    box-shadow: inset 0 0 0 5px #646fd4;
+    background-color: white;
+    border-radius: 100%;
+    width: 2em;
+    height: 2em;
+}
+
+.title{
+    display:flex;
+    justify-content:space-between;
+    width: 80%;
+    margin: auto;
+    font-weight:bold;
+}
+
+.position{
+    padding:20px;
+    background-color:white;
+    margin:10px;
+}
+
+.stations{
+    display:flex;
+    margin:10px;
+    flex-direction:row;
+    justify-content: space-evenly;
+   align-items: flex-end;
+}
