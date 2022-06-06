@@ -1,21 +1,23 @@
 create database if not exists rail;
 use rail;
-drop table if exists fare_table;
 drop table if exists fare;
 drop table if exists tickets;
-drop table if exists fare_tables;
 drop table if exists t_schedule;
 drop table if exists train_details;
--- drop table if exists passenger;
+drop table if exists passenger;
+
+
 create table if not exists passenger(username varchar(25) primary key, aadhaar numeric unique not null, name varchar(25) not null, age numeric not null, gender char(1) not null, address varchar(50) not null, mobile numeric not null, password varchar(25) not null, email varchar(25) not null, check(age >= 18));
 create table if not exists train_details(train_no varchar(25) primary key, train_name varchar(25) not null, from_station varchar(25) not null, to_station varchar(25) not null, total_coach numeric not null default 4, total_seats numeric not null, booked_seats numeric not null default 0, FC_total numeric not null, FC_booked numeric not null default 0, AC_total numeric not null, AC_booked numeric not null default 0, ST_total numeric not null, ST_booked numeric not null default 0, SL_total numeric not null, SL_booked numeric not null default 0, check(total_seats >= booked_seats), check(FC_total >= FC_booked), check(AC_total >= AC_booked), check(ST_total >= ST_booked), check(SL_total >= SL_booked));
 create table if not exists fare(station_id varchar(25) not null, train_no varchar(25) not null, FC_fare numeric not null, AC_fare numeric not null, ST_fare numeric not null, SL_fare numeric not null, foreign key (train_no) references train_details(train_no));
-create table if not exists tickets(ticket_no varchar(25) primary key, username varchar(25), profile_name varchar(25) not null, age numeric not null, gender char(1) not null, date_ date not null, train_no varchar(25) not null, coach_no varchar(25) not null, seat_no varchar(25) not null, from_station varchar(25) not null, to_station varchar(25) not null, fare numeric not null, foreign key (train_no) references train_details(train_no));
+create table if not exists tickets(ticket_no varchar(25), username varchar(25), profile_name varchar(25) not null, age numeric not null, gender char(1) not null, mobile numeric not null, date date not null, train_no varchar(25) not null, coach_no varchar(25) not null, seat_no numeric not null, from_station varchar(25) not null, to_station varchar(25) not null, fare numeric not null, foreign key (train_no) references train_details(train_no));
 create table if not exists t_schedule(station_name varchar(25) not null, platform_no numeric not null, train_no varchar(25) not null, arrival time not null, departure time not null, foreign key (train_no) references train_details(train_no));
+
 insert into train_details values("12163", "Chennai Express", "Delhi - DLI", "Chennai Central - MAS", 8, 300, 0, 50, 0, 50, 0, 100, 0, 100, 0);
 insert into train_details values("12632", "Nellai Express", "Thirunelveli - TEN", "Chennai Central - MAS", 12, 450, 0, 75, 0, 75, 0, 150, 0, 150, 0);
 insert into train_details values("12635", "Vaigai Express", "Chennai Central - MAS", "Madurai - MDU", 8, 300, 0, 50, 0, 50, 0, 100, 0, 100, 0);
 insert into train_details values("16859", "Mangalore Express", "Chennai Central - MAS", "Mangalore Central - MAQ", 12, 450, 0, 75, 0, 75, 0, 150, 0, 150, 0);
+
 insert into t_schedule values( "Delhi - DLI", 1, "12163", '06:00:00', '06:10:00'); 
 insert into t_schedule values( "Agra - AGC", 2, "12163", '06:40:00', '06:50:00'); 
 insert into t_schedule values( "Gwalior - GWL", 3, "12163", '07:20:00', '07:30:00'); 
@@ -24,16 +26,16 @@ insert into t_schedule values( "Nagpur - NGP", 5, "12163", '08:40:00', '08:50:00
 insert into t_schedule values( "Warangal - WL", 6, "12163", '09:20:00', '09:30:00'); 
 insert into t_schedule values( "VIjayawada - VZA", 7, "12163", '10:00:00', '10:10:00');
 insert into t_schedule values( "Chennai Central - MAS", 8, "12163", '10:40:00', '11:30:00'); 
+
 insert into t_schedule values( "Thirunelveli - TEN", 1, "12632", '13:00:00', '13:10:00'); 
 insert into t_schedule values( "Kovilpatti - CVP", 2, "12632", '13:40:00', '13:50:00'); 
 insert into t_schedule values( "Virudhunagar - VPT", 3, "12632", '14:20:00', '14:30:00'); 
 insert into t_schedule values( "Madurai - MDU", 4, "12632", '15:00:00', '15:10:00'); 
 insert into t_schedule values( "Dindigul - DG", 5, "12632", '15:40:00', '15:50:00'); 
 insert into t_schedule values( "Trichy - TPJ", 6, "12632", '16:20:00', '16:30:00'); 
-insert into t_schedule values( "Villupuram - VM ", 7, "12632", '17:00:00', '17:10:00'); 
+insert into t_schedule values( "Villupuram - VM", 7, "12632", '17:00:00', '17:10:00'); 
 insert into t_schedule values( "Chengalpattu - CGL", 8, "12632", '17:40:00', '17:50:00'); 
 insert into t_schedule values( "Tambaram - TBM", 9, "12632", '18:20:00', '18:30:00'); 
-insert into t_schedule values( "Chennai Central - MAS ", 10, "12632", '19:00:00', '19:00:00'); 
 insert into t_schedule values( "Chennai Central - MAS", 10, "12632", '19:00:00', '19:00:00'); 
 
 insert into t_schedule values( "Chennai Central - MAS", 1, "12635", '20:00:00', '20:10:00'); 
@@ -43,7 +45,6 @@ insert into t_schedule values( "Villupuram - VM", 4, "12635", '22:00:00', '22:10
 insert into t_schedule values( "Virudhachalam - VRI", 5, "12635", '22:40:00', '22:50:00'); 
 insert into t_schedule values( "Ariyalur - ALU", 6, "12635", '23:20:00', '23:30:00'); 
 insert into t_schedule values( "Trichy - TPJ", 7, "12635", '00:00:00', '00:10:00'); 
-insert into t_schedule values( "Dindigul Jn - DG", 8, "12635", '00:40:00', '00:50:00'); 
 insert into t_schedule values( "Dindigul - DG", 8, "12635", '00:40:00', '00:50:00'); 
 insert into t_schedule values( "Sholavadhan - SDN", 9, "12635", '01:20:00', '01:30:00'); 
 insert into t_schedule values( "Madurai - MDU", 10, "12635", '02:00:00', '02:00:00'); 
@@ -62,6 +63,7 @@ insert into t_schedule values( "Coimbatore - CBE", 11, "16859", '21:40:00', '21:
 insert into t_schedule values( "Kozhikode - CLD", 12, "16859", '22:20:00', '22:30:00'); 
 insert into t_schedule values( "Payyanur - PAY", 13, "16859", '23:00:00', '23:10:00'); 
 insert into t_schedule values( "Mangalore Central - MAQ", 14, "16859", '00:00:00', '00:00:00'); 
+
 insert into fare values( "Delhi - DLI", "12163", 0, 0, 0, 0); 
 insert into fare values( "Agra - AGC", "12163", 250, 200, 100, 50); 
 insert into fare values( "Gwalior - GWL","12163", 500, 400, 200, 100); 
@@ -70,6 +72,7 @@ insert into fare values( "Nagpur - NGP","12163", 1000, 800, 400, 200);
 insert into fare values( "Warangal - WL","12163", 1250, 1000, 500, 250); 
 insert into fare values( "VIjayawada - VZA","12163", 1500, 1200, 600, 300);
 insert into fare values( "Chennai Central - MAS","12163", 1750, 1400, 700, 350); 
+
 insert into fare values( "Thirunelveli - TEN","12632", 0, 0, 0, 0); 
 insert into fare values( "Kovilpatti - CVP","12632", 250, 200, 100, 50); 
 insert into fare values( "Virudhunagar - VPT","12632", 500, 400, 200, 100); 
@@ -79,7 +82,6 @@ insert into fare values( "Trichy - TPJ","12632", 1250, 1000, 500, 250);
 insert into fare values( "Villupuram - VM ","12632", 1500, 1200, 600, 300); 
 insert into fare values( "Chengalpattu - CGL","12632", 1750, 1400, 700, 350); 
 insert into fare values( "Tambaram - TBM","12632", 2000, 1600, 800, 400); 
-insert into fare values( "Chennai Central - MAS ", "12632", 2250, 1800, 900, 450); 
 insert into fare values( "Chennai Central - MAS", "12632", 2250, 1800, 900, 450); 
 
 insert into fare values( "Chennai Central - MAS","12635", 0, 0, 0, 0); 
@@ -89,7 +91,6 @@ insert into fare values( "Villupuram - VM","12635", 750, 600, 300, 150);
 insert into fare values( "Virudhachalam - VRI","12635", 1000, 800, 400, 200); 
 insert into fare values( "Ariyalur - ALU","12635", 1250, 1000, 500, 250); 
 insert into fare values( "Trichy - TPJ","12635", 1500, 1200, 600, 300); 
-insert into fare values( "Dindigul Jn - DG","12635", 1750, 1400, 700, 350); 
 insert into fare values( "Dindigul - DG","12635", 1750, 1400, 700, 350); 
 insert into fare values( "Sholavadhan - SDN","12635", 2000, 1600, 800, 400); 
 insert into fare values( "Madurai - MDU", "12635", 2250, 1800, 900, 450); 
@@ -108,6 +109,11 @@ insert into fare values( "Coimbatore - CBE", "16859", 2500, 2000, 1000, 500);
 insert into fare values( "Kozhikode - CLD", "16859", 2750, 2200, 1100, 550); 
 insert into fare values( "Payyanur - PAY", "16859", 3000, 2400, 1200, 600); 
 insert into fare values( "Mangalore Central - MAQ", "16859", 3250, 2600, 1300, 650); 
--- insert into passenger values ("Satty",4394309,"Sathya Naarayanaa",25,"M","Kalpakkam","sathya","satty@gmail.com");
--- insert into passenger values ("Hothands",5994309,"Sudeep K",27,"M","Coimbatore","sudeep","sudeep@gmail.com");
--- insert into passenger values ("mrHope",4394789,"Nitish K S",47,"M","Chennai","nitish","niti@gmail.com");
+
+insert into passenger values ("Satty",4394309,"Sathya Naarayanaa",25,"M","Kalpakkam",9445446158,"sathya","satty@gmail.com");
+insert into passenger values ("Hothands",5994309,"Sudeep K",27,"M","Coimbatore",9445454158,"sudeep","sudeep@gmail.com");
+insert into passenger values ("mrHope",4394789,"Nitish K S",47,"M","Chennai",7200838028,"nitish","niti@gmail.com");
+
+insert into tickets values ("12345","mrHope","Janavarshini",18,'F',7200838025,"2022-06-06","16859","Sitting",50,"Trichy - TPJ","Karur - KRR",50);
+insert into tickets values ("12345","mrHope","Nitish K S",47,'M',7200838025,"2022-06-06","16859","Sitting",51,"Trichy - TPJ","Karur - KRR",50);
+insert into tickets values ("12355","mrHope","Sathya Naarayanaa",25,'M',7200838025,"2022-06-07","16859","Sitting",50,"Trichy - TPJ","Karur - KRR",50);

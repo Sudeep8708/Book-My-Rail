@@ -104,9 +104,7 @@ app.post('/booking/submission', (req, res) => {
         res.send({"flag": 1});
     }else {
         res.send({"flag": 0});
-    }
-
-    
+    }    
 })
 
 app.post('/ticket/fetch', (req, res) => {
@@ -114,6 +112,15 @@ app.post('/ticket/fetch', (req, res) => {
     con.query(q, function(err, result) {
         if (err) throw err;
         res.send(result);
+    })
+})
+app.post('/trainenq/details', (req,res) => {
+    const q = "select station_name,arrival from t_schedule where train_no='" + String(req.body.temp) + "' order by arrival"
+    console.log(req.body.temp)
+    con.query(q, function(err, result) {
+        if(err) throw err;
+        res.send(result);
+        console.log(result);
     })
 })
 

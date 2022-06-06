@@ -25,10 +25,10 @@ const TrainDetail = (props) => {
                </div>
                <div className="to-from">
                    <div>
-                       {train.from_station} - {train.arrival}
+                       {userFetch.from} - {train.arrival}
                    </div>
                    <div>
-                       {train.to_station} - {train.departure}
+                       {userFetch.to} - {train.departure}
                    </div>
                </div>
                <div className="class-container">
