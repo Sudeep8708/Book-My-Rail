@@ -22,7 +22,12 @@ const Navbar = () => {
             </div>
             <FontAwesomeIcon icon={faBars}  size="2x" className='nav-menu'/>
             <div className="nav-links">
-                <div>
+            <div>
+                    <NavLink to="/trainenq" className="link">
+                        Train Enquiry
+                    </NavLink>
+                </div>
+            <div>
                     <NavLink to="/contact" className="link">
                         Contact
                     </NavLink>
