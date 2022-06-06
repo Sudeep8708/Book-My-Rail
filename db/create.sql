@@ -33,7 +33,7 @@ insert into t_schedule values( "Virudhunagar - VPT", 3, "12632", '14:20:00', '14
 insert into t_schedule values( "Madurai - MDU", 4, "12632", '15:00:00', '15:10:00'); 
 insert into t_schedule values( "Dindigul - DG", 5, "12632", '15:40:00', '15:50:00'); 
 insert into t_schedule values( "Trichy - TPJ", 6, "12632", '16:20:00', '16:30:00'); 
-insert into t_schedule values( "Villupuram - VM ", 7, "12632", '17:00:00', '17:10:00'); 
+insert into t_schedule values( "Villupuram - VM", 7, "12632", '17:00:00', '17:10:00'); 
 insert into t_schedule values( "Chengalpattu - CGL", 8, "12632", '17:40:00', '17:50:00'); 
 insert into t_schedule values( "Tambaram - TBM", 9, "12632", '18:20:00', '18:30:00'); 
 insert into t_schedule values( "Chennai Central - MAS", 10, "12632", '19:00:00', '19:00:00'); 
