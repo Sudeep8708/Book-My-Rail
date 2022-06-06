@@ -80,6 +80,34 @@ app.post('/dashboard/travel-history', (req, res) => {
         console.log(result);
     })
 })
+
+app.post('/booking/submission', (req, res) => {
+    console.log(req.body)
+    const passenger = req.body.passenger;
+    console.log(passenger);
+    let total = req.body[String(req.body.select)+"_total"];
+    let booked = req.body[String(req.body.select)+"_booked"];
+    if(total > booked) {
+        req.body.passenger.map((item) => {
+            let seat_no = String(req.body.select) + "_" + String(booked+1);
+            let ticket_no = String(req.body.train_no) + "_" + String(req.body.date_picker) + "_" + String(seat_no);
+            const q1 = "insert into tickets values('" + ticket_no + "', '" + String(req.body.username) + "', '" + String(item.name) + "', " + item.age + ", '" + String(item.gender)[0] + "', STR_TO_DATE('" + String(req.body.date_picker) + "', '%d/%m/%Y'), '" + String(req.body.train_no) + "', '" + String(req.body.select) + "', '" + String(seat_no) + "', '" + String(req.body.from_station) + "', '" + String(req.body.to_station)+ "', " + String(req.body.fare) + ")";
+            con.query(q1, function(err) {
+                if (err) throw err;
+            })
+            const q2 = "update train_details set " + String(req.body.select) + "_booked = " + String(req.body.select) + "_booked + 1 where train_no = '" + String(req.body.train_no) + "'";
+            con.query(q2, function(err) {
+                if (err) throw err;
+            })
+            booked += 1;
+        })
+        res.send({"flag": 1});
+    }else {
+        res.send({"flag": 0});
+    }
+
+    
+})
 app.listen(5000, () => {
     console.log("connected")
 });
