@@ -68,7 +68,6 @@ const Plan_your_journey = () => {
                 </div>
                 <div>
                     <StationSelect name="to" onchange={onChangeObj}/>
-                    {/* <InputWithIcon label="to" id="to" onchange={onChangeObj} /> */}
                 </div>
                 <div>
                     <ResponsiveDatePickers onchange={onChangeObj} />

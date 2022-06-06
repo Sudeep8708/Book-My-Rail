@@ -2,7 +2,40 @@
     import Traincard from './train_card.js'
     import PassDetails from './pass_details.js'
     const Card = ()=>{
-
+        const ticket = {
+            train_no: "12345",
+            train_name: "Rockfort Express",
+            from: "Chennai",
+            to: "Trichy",
+            startTime: "10:00",
+            endTime: "16:00",
+            passenger: [
+                {
+                    ticket_no: "4343",
+                    name: "Nitish",
+                    age: 18,
+                    Coach: "D5",
+                    seat: 35,
+                    contact: 7200838025,
+                },
+                {
+                    ticket_no: "4345",
+                    name: "Nitish",
+                    age: 18,
+                    Coach: "D5",
+                    seat: 35,
+                    contact: 7200838025,
+                },
+                {
+                    ticket_no: "4347",
+                    name: "Nitish",
+                    age: 18,
+                    Coach: "D5",
+                    seat: 35,
+                    contact: 7200838025,
+                },
+            ],
+        };
         return(
             <>
             <div className = "card">

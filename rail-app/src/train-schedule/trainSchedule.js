@@ -1,4 +1,4 @@
-import TrainDetail from "./train";
+import TrainDetail from "./trains";
 import {NavLink,useNavigate,useLocation} from "react-router-dom"
 import Plan_your_journey from "../plan-your-journey/plan_your_journey";
 import { ReactSession }  from 'react-client-session';

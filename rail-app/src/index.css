@@ -14,11 +14,30 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-image: linear-gradient(to right, #ffffff, #9ba3eb);
+    scroll-snap-type: y mandatory;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
+}
+
+/* Plan ur journey */
+.input-field > input {
+    border: 1px solid rgb(167, 167, 167);
+    border-radius: 4px;
+    height: 3.5em;
+    background-color: inherit;
+    z-index: -1;
+}
+.input-field > label {
+    background-color: #e8ebff;
+    color: #696a70;
+    position: relative;
+    bottom: 1.5em;
+    left: 5em;
+    z-index: 2;
+    padding: 1px;
 }
 
 .booking-section {
@@ -100,17 +119,25 @@ code {
     justify-content: space-around;
 }
 
-.class-container > div {
+.class-container > input[type="button"] {
     font-size: 0.8em;
     border: 1px solid black;
-    padding: 1rem;
     margin: 1.5rem;
-    width: 5rem;
+    width: 8rem;
+    height: 4rem;
     box-shadow: 0 0 2px 1px;
+    background-color: #f9f9ff;
+    color: #242f9b;
 }
 
-.class-container > div:hover {
+.class-container > input[type="button"]:hover {
     cursor: pointer;
+    background-color: #f9f9ff;
+}
+
+.class-container >input[type="button"]:focus {
+    border: 3px solid blue ;
+    background-color: #ccd8f6;
 }
 
 .plan-container {
@@ -147,16 +174,39 @@ code {
     text-shadow: 1px 5px 7px #242f9b;
 }
 
+/* Dashboard */
+
 .dashboard {
-    width: 40%;
     margin: auto;
+    display: flex;
+    align-content: space-around;
+    height: 35em;
+}
+
+.profile-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    max-width: 30%;
 }
 
-.dashboard > div {
-    margin-top: 2em;
+.history-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    align-items: center;
+}
+
+.profile-container div, .history-container div {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.2em;
+    margin: 0.5em;
+}
+
+.t_no {
+    border-bottom: 1px solid #696a70;
 }
 
 /* nav bar */
@@ -198,7 +248,7 @@ code {
     border-bottom: 1px solid #242f9b;
 }
 
-@media screen and (min-width: 400px){
+@media screen and (min-width: 400px) {
     .nav-bar {
         flex-direction: row;
         justify-content: space-between;
@@ -251,7 +301,7 @@ code {
     width: fit-content;
 }
 
-@media screen and (min-width: 400px){
+@media screen and (min-width: 400px) {
     .form-entry input {
         width: 20rem;
     }

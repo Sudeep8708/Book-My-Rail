@@ -46,11 +46,38 @@ app.post('/planYourJourney/trainSchedule', (req, res) => {
     })
 })  
 
+
 app.post('/planYourJourney/stationName', (req, res) => {
     const q = 'select distinct(station_name) from t_schedule'
     con.query(q, function(err, result) {
         if(err) throw err;
         res.send(result);
+    })
+})
+
+app.post('/booking/fareCalculation', (req, res) => {
+    const q = 'select B.'+ String(req.body.select) + '_fare - A.'+ String(req.body.select)+ '_fare as fare from fare A inner join fare B on A.train_no = B.train_no where A.train_no = "'+ String(req.body.train_no) +'" and A.station_id = "'+ String(req.body.from) +'" and B.station_id = "'+ String(req.body.to) +'"';
+    con.query(q, function(err, result) {
+        if(err) throw err;
+        res.send(result);
+    })
+})
+
+app.post('/dashboard/acc_detail', (req, res) => {
+    const q = "select * from passenger where username='"+ String(req.body.username) + "'";
+    con.query(q, function(err, result) {
+        if(err) throw err;
+        res.send(result);
+    })
+})
+
+app.post('/dashboard/travel-history', (req, res) => {
+    const q = "select count(*) as count, sum(fare) as price,ticket_no, from_station, to_station from tickets where username='" + String(req.body.username) + "' group by ticket_no";
+    console.log(req.body.username)
+    con.query(q, function(err, result) {
+        if(err) throw err;
+        res.send(result);
+        console.log(result);
     })
 })
 app.listen(5000, () => {

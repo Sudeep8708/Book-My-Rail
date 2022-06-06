@@ -20,17 +20,17 @@ const StationSelect = (props) => {
 		fetch_func();
 	}, []);
 	return (
-		<>
+		<div className="input-field">
 		<label>{props.name}</label>
 		<input name={props.name} list={props.name} onChange={props.onchange}/>
-		<datalist id={props.name}>
+		<datalist id={props.name} >
 			{
 				 result.map((item) => {
 					return <option key={item.station_name} value={item.station_name}	/> 
 				 })
 			}
 		</datalist>
-		</>
+		</div>
 	)
 }
 
