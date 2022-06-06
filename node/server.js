@@ -53,6 +53,15 @@ app.post('/planYourJourney/stationName', (req, res) => {
         res.send(result);
     })
 })
+
+app.post('/booking/fareCalculation', (req, res) => {
+    const q = 'select B.'+ String(req.body.select) + '_fare - A.'+ String(req.body.select)+ '_fare as fare from fare A inner join fare B on A.train_no = B.train_no where A.train_no = "'+ String(req.body.train_no) +'" and A.station_id = "'+ String(req.body.from) +'" and B.station_id = "'+ String(req.body.to) +'"';
+    con.query(q, function(err, result) {
+        if(err) throw err;
+        res.send(result);
+    })
+})
+
 app.listen(5000, () => {
     console.log("connected")
 });

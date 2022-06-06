@@ -1,31 +1,71 @@
 import { ReactSession } from "react-client-session";
 import { useNavigate } from "react-router-dom";
+import {useState} from "react";
 import Train from "./train";
 ReactSession.setStoreType("sessionStorage");
 
 const TrainDetail = (props) => {
     const trainDetail = props.trainDetail;
-    const userFetch = props.userFetch;
+    const [userFetch, setFetch] = useState(props.userFetch);
     const navigate = useNavigate();
     const username = ReactSession.get("username");
-    console.log(userFetch.from);
-    // console.log("The Train Details to be displayed: ",props.train_det);
-    const handleSubmit = (t, u) => {
-        if (username) {
-            navigate("/booking", {state: {trainDetail: t, userFetch: u}});
-        } else {
-            alert("Login first");
-            navigate("/login");
-        }
-    };
+
     const changeClass = (e) => {
+        setFetch({...userFetch, ["select"]:e.target.name});
         console.log(e.target.name);
-    }
+        console.log(userFetch);
+    };
+    // console.log("The Train Details to be displayed: ",props.train_det); 
 
     return (
         <>
             {trainDetail.map((train) => (
-               <Train key={train.train_no} train={train} userFetch={userFetch} handleSubmit={handleSubmit} changeClass={changeClass}/>
+               <div className="container">
+               <div className="value-container">
+                   {train.train_no} - {train.train_name}
+               </div>
+               <div className="to-from">
+                   <div>
+                       {train.from_station} - {train.arrival}
+                   </div>
+                   <div>
+                       {train.to_station} - {train.departure}
+                   </div>
+               </div>
+               <div className="class-container">
+                   <input
+                       type="button"
+                       onClick={changeClass}
+                       name="FC"
+                       value={"First Class: " + String(train.FC_total - train.FC_booked)}
+                   />
+                   <input
+                       type="button"
+                       onClick={changeClass}
+                       name="AC"
+                       value={"AC: " + String(train.AC_total - train.AC_booked)}
+                   />
+                   <input
+                       type="button"
+                       onClick={changeClass}
+                       name="ST"
+                       value={"Sitting: " + String(train.ST_total - train.ST_booked)}
+                   />
+                   <input
+                       type="button"
+                       onClick={changeClass}
+                       name="SL"
+                       value={"Sleeper: " + String(train.SL_total - train.SL_booked)}
+                   />
+               </div>
+               <input type="submit" value="Book now" onClick={() => {
+                if (username) {
+                    navigate("/booking", {state: {trainDetail: train, userFetch: userFetch}});
+                } else {
+                    alert("Login first");
+                    navigate("/login");
+                }}} />
+           </div>
             ))}
         </>
     );

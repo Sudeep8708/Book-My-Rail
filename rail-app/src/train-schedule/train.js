@@ -1,4 +1,6 @@
+// import {useState} from "react"
 export default function Train({ train, userFetch, handleSubmit, changeClass }) {
+    // const [userfetch, setfetch] = useState(userFetch);
     return (
         <div className="container">
             <div className="value-container">
@@ -16,7 +18,7 @@ export default function Train({ train, userFetch, handleSubmit, changeClass }) {
                 <input
                     type="button"
                     onClick={changeClass}
-                    name="First Class"
+                    name="FC"
                     value={"First Class: " + String(train.FC_total - train.FC_booked)}
                 />
                 <input
@@ -28,13 +30,13 @@ export default function Train({ train, userFetch, handleSubmit, changeClass }) {
                 <input
                     type="button"
                     onClick={changeClass}
-                    name="Sitting"
+                    name="ST"
                     value={"Sitting: " + String(train.ST_total - train.ST_booked)}
                 />
                 <input
                     type="button"
                     onClick={changeClass}
-                    name="Sleeper"
+                    name="SL"
                     value={"Sleeper: " + String(train.SL_total - train.SL_booked)}
                 />
             </div>

@@ -1,8 +1,7 @@
 create database if not exists rail;
 use rail;
-drop table if exists fare_table;
+drop table if exists fare;
 drop table if exists tickets;
-drop table if exists fare_tables;
 drop table if exists t_schedule;
 drop table if exists train_details;
 drop table if exists passenger;
@@ -37,7 +36,7 @@ insert into t_schedule values( "Trichy - TPJ", 6, "12632", '16:20:00', '16:30:00
 insert into t_schedule values( "Villupuram - VM ", 7, "12632", '17:00:00', '17:10:00'); 
 insert into t_schedule values( "Chengalpattu - CGL", 8, "12632", '17:40:00', '17:50:00'); 
 insert into t_schedule values( "Tambaram - TBM", 9, "12632", '18:20:00', '18:30:00'); 
-insert into t_schedule values( "Chennai Central - MAS ", 10, "12632", '19:00:00', '19:00:00'); 
+insert into t_schedule values( "Chennai Central - MAS", 10, "12632", '19:00:00', '19:00:00'); 
 
 insert into t_schedule values( "Chennai Central - MAS", 1, "12635", '20:00:00', '20:10:00'); 
 insert into t_schedule values( "Tambaram - TBM", 2, "12635", '20:40:00', '20:50:00'); 
@@ -46,7 +45,7 @@ insert into t_schedule values( "Villupuram - VM", 4, "12635", '22:00:00', '22:10
 insert into t_schedule values( "Virudhachalam - VRI", 5, "12635", '22:40:00', '22:50:00'); 
 insert into t_schedule values( "Ariyalur - ALU", 6, "12635", '23:20:00', '23:30:00'); 
 insert into t_schedule values( "Trichy - TPJ", 7, "12635", '00:00:00', '00:10:00'); 
-insert into t_schedule values( "Dindigul Jn - DG", 8, "12635", '00:40:00', '00:50:00'); 
+insert into t_schedule values( "Dindigul - DG", 8, "12635", '00:40:00', '00:50:00'); 
 insert into t_schedule values( "Sholavadhan - SDN", 9, "12635", '01:20:00', '01:30:00'); 
 insert into t_schedule values( "Madurai - MDU", 10, "12635", '02:00:00', '02:00:00'); 
 
@@ -83,7 +82,7 @@ insert into fare values( "Trichy - TPJ","12632", 1250, 1000, 500, 250);
 insert into fare values( "Villupuram - VM ","12632", 1500, 1200, 600, 300); 
 insert into fare values( "Chengalpattu - CGL","12632", 1750, 1400, 700, 350); 
 insert into fare values( "Tambaram - TBM","12632", 2000, 1600, 800, 400); 
-insert into fare values( "Chennai Central - MAS ", "12632", 2250, 1800, 900, 450); 
+insert into fare values( "Chennai Central - MAS", "12632", 2250, 1800, 900, 450); 
 
 insert into fare values( "Chennai Central - MAS","12635", 0, 0, 0, 0); 
 insert into fare values( "Tambaram - TBM","12635", 250, 200, 100, 50); 
@@ -92,7 +91,7 @@ insert into fare values( "Villupuram - VM","12635", 750, 600, 300, 150);
 insert into fare values( "Virudhachalam - VRI","12635", 1000, 800, 400, 200); 
 insert into fare values( "Ariyalur - ALU","12635", 1250, 1000, 500, 250); 
 insert into fare values( "Trichy - TPJ","12635", 1500, 1200, 600, 300); 
-insert into fare values( "Dindigul Jn - DG","12635", 1750, 1400, 700, 350); 
+insert into fare values( "Dindigul - DG","12635", 1750, 1400, 700, 350); 
 insert into fare values( "Sholavadhan - SDN","12635", 2000, 1600, 800, 400); 
 insert into fare values( "Madurai - MDU", "12635", 2250, 1800, 900, 450); 
 
