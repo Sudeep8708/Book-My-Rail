@@ -4,7 +4,9 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMultiply } from "@fortawesome/free-solid-svg-icons";
 import {useLocation,useNavigate} from "react-router-dom";
 import {useEffect} from "react";
+import { ReactSession } from "react-client-session";
 import TrainDetail from "../train-schedule/train";
+ReactSession.setStoreType("sessionStorage");
 
 const TicketFare = (props) => {
     const count = props.count + 1;
@@ -21,6 +23,7 @@ const TicketFare = (props) => {
 const Booking = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const username = ReactSession.get("username");
     const trainDetail = location.state.trainDetail;
     const userFetch = location.state.userFetch;
     const [fare, setFare] = useState(0);
@@ -90,7 +93,26 @@ const Booking = () => {
         passenger.forEach((item) => {
             console.log(item.name + item.gender + item.age + item.preference);
         });
-        navigate("/ticket", {state: {passenger: passenger, count: count, userFetch: userFetch, trainDetail: trainDetail}})
+        const obj = {...userFetch, ...trainDetail, ["username"]: username, ["fare"]: fare, ["passenger"]: passenger};
+        console.log(obj);
+        fetch("http://localhost:5000/booking/submission", {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(obj),
+        }).then (function (response) {
+            return response.json();
+        }).then (function (myjson) {
+            if(myjson["flag"] === 0){
+                alert("All seats are booked!");
+                navigate("/");
+            } else {
+                navigate("/ticket", {state: {passenger: passenger, count: count, userFetch: userFetch, trainDetail: trainDetail}})
+            }
+        })
+        
     };
 
     return (
