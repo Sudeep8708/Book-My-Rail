@@ -46,6 +46,7 @@ app.post('/planYourJourney/trainSchedule', (req, res) => {
     })
 })  
 
+
 app.post('/planYourJourney/stationName', (req, res) => {
     const q = 'select distinct(station_name) from t_schedule'
     con.query(q, function(err, result) {
@@ -62,6 +63,23 @@ app.post('/booking/fareCalculation', (req, res) => {
     })
 })
 
+app.post('/dashboard/acc_detail', (req, res) => {
+    const q = "select * from passenger where username='"+ String(req.body.username) + "'";
+    con.query(q, function(err, result) {
+        if(err) throw err;
+        res.send(result);
+    })
+})
+
+app.post('/dashboard/travel-history', (req, res) => {
+    const q = "select count(*) as count, sum(fare) as price,ticket_no, from_station, to_station from tickets where username='" + String(req.body.username) + "' group by ticket_no";
+    console.log(req.body.username)
+    con.query(q, function(err, result) {
+        if(err) throw err;
+        res.send(result);
+        console.log(result);
+    })
+})
 app.listen(5000, () => {
     console.log("connected")
 });

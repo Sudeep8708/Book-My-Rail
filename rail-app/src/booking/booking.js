@@ -4,6 +4,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMultiply } from "@fortawesome/free-solid-svg-icons";
 import {useLocation,useNavigate} from "react-router-dom";
 import {useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import TrainDetail from "../train-schedule/train";
 
 const TicketFare = (props) => {
