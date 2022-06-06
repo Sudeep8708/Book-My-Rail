@@ -1,11 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import { ReactSession } from "react-client-session";
-ReactSession.setStoreType("sessionStorage");
 
-export default function AccDetails() {
-    const username = ReactSession.get("username");
+
+export default function AccDetails(props) {
+    const username = props.username;
     const [account, setAccount] = useState({});
     useEffect(() => {
         fetch("http://localhost:5000/dashboard/acc_detail", {

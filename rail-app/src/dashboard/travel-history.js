@@ -1,9 +1,7 @@
 import { useState,useEffect } from "react";
-import { ReactSession } from "react-client-session";
-ReactSession.setStoreType("sessionStorage");
 
-export default function TravelHistory() {
-    const username = ReactSession.get("username");
+export default function TravelHistory(props) {
+    const username = props.username;
     const [history,setHistory] = useState([])
     useEffect(() => {
         fetch("http://localhost:5000/dashboard/travel-history", {

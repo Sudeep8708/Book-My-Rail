@@ -10,7 +10,6 @@ import Train_enq_res from './ticket_enquiry/trainstatus_res.js'
 import Book from "./booking/booking";
 import Plan_your_journey from "./plan-your-journey/plan_your_journey";
 import Signup from "./login-page/signup.js";
-import TrainDetail from "./train-schedule/train";
 import LoginDetails from "./login-page/login";
 import Navbar from "./navbar/nav-bar.js";
 import Four_not_four from "./four_not_four.js";

@@ -1,7 +1,6 @@
 import { ReactSession } from "react-client-session";
 import { useNavigate } from "react-router-dom";
 import {useState} from "react";
-import Train from "./train";
 ReactSession.setStoreType("sessionStorage");
 
 const TrainDetail = (props) => {

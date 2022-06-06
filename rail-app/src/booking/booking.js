@@ -5,7 +5,6 @@ import { faMultiply } from "@fortawesome/free-solid-svg-icons";
 import {useLocation,useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import { ReactSession } from "react-client-session";
-import TrainDetail from "../train-schedule/train";
 ReactSession.setStoreType("sessionStorage");
 
 const TicketFare = (props) => {
@@ -109,7 +108,7 @@ const Booking = () => {
                 alert("All seats are booked!");
                 navigate("/");
             } else {
-                navigate("/ticket", {state: {passenger: passenger, count: count, userFetch: userFetch, trainDetail: trainDetail}})
+                navigate("/ticket", {state: { userFetch: userFetch, trainDetail: trainDetail}})
             }
         })
         
