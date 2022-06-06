@@ -1,11 +1,33 @@
-.usr_pnr{
-
+.usr_pnr {
     width: 40%;
     margin: auto;
     background-image: linear-gradient(135deg, #e8ebff 50%, #fafaff, #e8ebff);
     box-shadow: 3px 3px 12px 1px #646fd4;
     border-radius: 5px;
     padding: 5px;
+}
+
+.map-container {
+    padding: 20px;
+    margin: 1em auto;
+    width: 80%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem;
+}
+
+.stations {
+    display: flex;
+    margin: 1rem 0;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.stations > div {
+    width: 2em;
 }
 
 .route {
@@ -16,39 +38,18 @@
     justify-content: center;
 }
 
-.line{
-    width:0.45em;
-    height:5rem;
-    background-color:lightblue;
+
+.line {
+    width: 0.45em;
+    height: 5rem;
+    background-color: lightblue;
     margin-bottom: 0.5em;
 }
 
-.circle{
+.circle {
     box-shadow: inset 0 0 0 5px #646fd4;
     background-color: white;
     border-radius: 100%;
     width: 2em;
     height: 2em;
-}
-
-.title{
-    display:flex;
-    justify-content:space-between;
-    width: 80%;
-    margin: auto;
-    font-weight:bold;
-}
-
-.position{
-    padding:20px;
-    background-color:white;
-    margin:10px;
-}
-
-.stations{
-    display:flex;
-    margin:10px;
-    flex-direction:row;
-    justify-content: space-evenly;
-   align-items: flex-end;
 }

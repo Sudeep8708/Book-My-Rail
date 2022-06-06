@@ -1,4 +1,3 @@
-import "./login.css";
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
 import { NavLink,useNavigate} from "react-router-dom"
 import Navbar from "../navbar/nav-bar";
