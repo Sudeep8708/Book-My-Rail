@@ -41,7 +41,7 @@ const Result = () => {
                     const [station, code] = String(item.station_name).split(
                         "-"
                     );
-                    if (item.arrival < time) {
+                    if (item.arrival < currTime) {
                         return (
                             <div key={code} className="stations">
                                 <div>{code}</div>

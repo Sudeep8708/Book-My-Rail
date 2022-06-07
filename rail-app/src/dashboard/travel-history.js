@@ -25,10 +25,11 @@ export default function TravelHistory(props) {
         <div className="container history-container">
             <h1>Travel History</h1>
             {history.map((travel) => {
-                let date = travel.date.split('T')
+                let date = travel.date.split('T')[0]
+
                 return (
                     <div key={travel.ticket_no} className="container his-con">
-                        <div className="t_no">{travel.ticket_no}</div>
+                        <div className="t_no">{travel.ticket_no} &emsp; - &emsp;  {travel.name}</div>
                         <div className="bold">from</div>
                         <div className="bold">to</div>
                         <div className="bold">train_no</div>
@@ -36,9 +37,9 @@ export default function TravelHistory(props) {
                         <div className="bold">price</div>
                         <div>{travel.from_station}</div>
                         <div>{travel.to_station}</div>
-                        <div>{travel.train_no}</div>
-                        <div>{date[0]}</div>
-                        <div>{travel.price}</div>
+                        <div>{travel.train_no} - {travel.train_name}</div>
+                        <div>{date}</div>
+                        <div>{travel.fare}</div>
                     </div>
                 );
             })}

@@ -91,7 +91,7 @@ app.post('/dashboard/acc_detail', (req, res) => {
 })
 
 app.post('/dashboard/travel-history', (req, res) => {
-    const q = "select count(*) as count, sum(fare) as price,ticket_no, from_station, to_station from tickets where username='" + String(req.body.username) + "' group by date,train_no order by date, ticket_no";
+    const q = "select A.fare as fare , A.ticket_no as ticket_no, A.from_station as from_station, A.to_station as to_station, A.train_no as train_no, A.date as date, B.train_name as train_name, A.profile_name as name from tickets A inner join train_details B on A.train_no = B.train_no where username='" + String(req.body.username) + "' order by date desc, ticket_no";
     console.log(req.body.username)
     con.query(q, function(err, result) {
         if(err) throw err;
