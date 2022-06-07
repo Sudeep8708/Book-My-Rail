@@ -65,7 +65,6 @@ const Booking = () => {
             gender: "",
             preference: "",
         };
-    const dat = userFetch.date_picker.toLocaleDateString('en-US');
     const [count, setCount] = useState(0);
     const [passenger, setPassengerDetails] = useState([profile]);
 
@@ -110,7 +109,7 @@ const Booking = () => {
         passenger.forEach((item) => {
             console.log(item.name + item.gender + item.age + item.preference);
         });
-        const obj = {...userFetch, ...trainDetail, ["username"]: username, ["fare"]: fare, ["passenger"]: passenger, ["date"]:dat};
+        const obj = {...userFetch, ...trainDetail, ["username"]: username, ["fare"]: fare, ["passenger"]: passenger};
         console.log(obj);
         if(userFetch.flag){
             fetch("http://localhost:5000/booking/connectsubmission", {

@@ -111,8 +111,8 @@ app.post('/booking/submission', (req, res) => {
         req.body.passenger.map((item) => {
             booked += 1;
             let seat_no = String(req.body.select) + "_" + String(booked);
-            let ticket_no = String(req.body.train_no) + "_" + String(req.body.date) + "_" + String(seat_no);
-            const q1 = "insert into tickets values('" + ticket_no + "', '" + String(req.body.username) + "', '" + String(item.name) + "', " + item.age + ", '" + String(item.gender)[0] + "', STR_TO_DATE('" + String(req.body.date) + "', '%m/%d/%Y'), '" + String(req.body.train_no) + "', '" + String(req.body.select) + "', '" + String(seat_no) + "', '" + String(req.body.from_station) + "', '" + String(req.body.to_station)+ "', " + String(req.body.fare.fare) + ")";
+            let ticket_no = String(req.body.train_no) + "_" + String(req.body.date_picker) + "_" + String(seat_no);
+            const q1 = "insert into tickets values('" + ticket_no + "', '" + String(req.body.username) + "', '" + String(item.name) + "', " + item.age + ", '" + String(item.gender)[0] + "', STR_TO_DATE('" + String(req.body.date_picker) + "', '%d/%m/%Y'), '" + String(req.body.train_no) + "', '" + String(req.body.select) + "', '" + String(seat_no) + "', '" + String(req.body.from_station) + "', '" + String(req.body.to_station)+ "', " + String(req.body.fare.fare) + ")";
             con.query(q1, function(err) {
                 if (err) throw err;
             })
@@ -138,10 +138,10 @@ app.post('/booking/connectsubmission', (req, res) => {
             booked_1 += 1;
             booked_2 += 1;
             let seat_no_1 = String(req.body.select) + "_" + String(booked_1);
-            let ticket_no_1 = String(req.body.train_no_1) + "_" + String(req.body.date) + "_" + String(seat_no_1);
+            let ticket_no_1 = String(req.body.train_no_1) + "_" + String(req.body.date_picker) + "_" + String(seat_no_1);
             let seat_no_2 = String(req.body.select2) + "_" + String(booked_2);
-            let ticket_no_2 = String(req.body.train_no_2) + "_" + String(req.body.date) + "_" + String(seat_no_2);
-            const q1 = "insert into tickets values('" + ticket_no_1 + "', '" + String(req.body.username) + "', '" + String(item.name) + "', " + item.age + ", '" + String(item.gender)[0] + "', STR_TO_DATE('" + String(req.body.date) + "', '%m/%d/%Y'), '" + String(req.body.train_no_1) + "', '" + String(req.body.select) + "', '" + String(seat_no_1) + "', '" + String(req.body.from_station_1) + "', '" + String(req.body.to_station_1)+ "', " + String(req.body.fare.fare1) + ")";
+            let ticket_no_2 = String(req.body.train_no_2) + "_" + String(req.body.date_picker) + "_" + String(seat_no_2);
+            const q1 = "insert into tickets values('" + ticket_no_1 + "', '" + String(req.body.username) + "', '" + String(item.name) + "', " + item.age + ", '" + String(item.gender)[0] + "', STR_TO_DATE('" + String(req.body.date_picker) + "', '%d/%m/%Y'), '" + String(req.body.train_no_1) + "', '" + String(req.body.select) + "', '" + String(seat_no_1) + "', '" + String(req.body.from_station_1) + "', '" + String(req.body.to_station_1)+ "', " + String(req.body.fare.fare1) + ")";
             con.query(q1, function(err) {
                 if (err) throw err;
             })
@@ -149,7 +149,7 @@ app.post('/booking/connectsubmission', (req, res) => {
             con.query(q2, function(err) {
                 if (err) throw err;
             })
-            const q3 = "insert into tickets values('" + ticket_no_2 + "', '" + String(req.body.username) + "', '" + String(item.name) + "', " + item.age + ", '" + String(item.gender)[0] + "', STR_TO_DATE('" + String(req.body.date) + "', '%m/%d/%Y'), '" + String(req.body.train_no_2) + "', '" + String(req.body.select2) + "', '" + String(seat_no_2) + "', '" + String(req.body.from_station_2) + "', '" + String(req.body.to_station_2)+ "', " + String(req.body.fare.fare2) + ")";
+            const q3 = "insert into tickets values('" + ticket_no_2 + "', '" + String(req.body.username) + "', '" + String(item.name) + "', " + item.age + ", '" + String(item.gender)[0] + "', STR_TO_DATE('" + String(req.body.date_picker) + "', '%d/%m/%Y'), '" + String(req.body.train_no_2) + "', '" + String(req.body.select2) + "', '" + String(seat_no_2) + "', '" + String(req.body.from_station_2) + "', '" + String(req.body.to_station_2)+ "', " + String(req.body.fare.fare2) + ")";
             con.query(q3, function(err) {
                 if (err) throw err;
             })
@@ -166,7 +166,7 @@ app.post('/booking/connectsubmission', (req, res) => {
 
 app.post('/ticket/fetch', (req, res) => {
         console.log(req.body);
-        const q = "select * from tickets where train_no = '" + String(req.body.train_no) + "' and username = '" + String(req.body.username) + "' and date = STR_TO_DATE('" + String(req.body.date) + "', '%m/%d/%Y')";
+        const q = "select * from tickets where train_no = '" + String(req.body.train_no) + "' and username = '" + String(req.body.username) + "' and date = STR_TO_DATE('" + String(req.body.date) + "', '%d/%m/%Y')";
         con.query(q, function(err, result) {
             if (err) throw err;
             res.send(result);
@@ -175,7 +175,7 @@ app.post('/ticket/fetch', (req, res) => {
 })
 app.post('/ticket/connectfetch1',  (req, res) => {
     console.log(req.body);
-    const q = "select * from tickets where train_no = '" + String(req.body.train_no_1) + "' and username = '" + String(req.body.username) + "' and date = STR_TO_DATE('" + String(req.body.date) + "', '%m/%d/%Y')";
+    const q = "select * from tickets where train_no = '" + String(req.body.train_no_1) + "' and username = '" + String(req.body.username) + "' and date = STR_TO_DATE('" + String(req.body.date) + "', '%d/%m/%Y')";
         con.query(q, function(err, result) {
             if (err) throw err;
             console.log(result);
@@ -183,7 +183,7 @@ app.post('/ticket/connectfetch1',  (req, res) => {
         })
 })
 app.post('/ticket/connectfetch2',  (req, res) => {
-    const q = "select * from tickets where train_no = '" + String(req.body.train_no_2) + "' and username = '" + String(req.body.username) + "' and date = STR_TO_DATE('" + String(req.body.date) + "', '%m/%d/%Y')";
+    const q = "select * from tickets where train_no = '" + String(req.body.train_no_2) + "' and username = '" + String(req.body.username) + "' and date = STR_TO_DATE('" + String(req.body.date) + "', '%d/%m/%Y')";
         con.query(q, function(err, result) {
             if (err) throw err;
             console.log(result);

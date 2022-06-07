@@ -7,9 +7,8 @@ const Train_card = (props)=>{
         <>
         <div className="train_card">
             <div>
-                <p>{props.name}</p>
             <img src={img} style={{height:'120px',width:'150px'}} alt="train_logo"/>
-            <h4>{props.name}</h4>
+            <h4>{props.no} - {props.name}</h4>
             </div>  
             <TrainFromTO time = {props.arrival} date = {props.dateofjourney} from_to={props.from}/>    
             <TrainFromTO time = {props.departure} date = {props.dateofjourney} from_to={props.to}/>

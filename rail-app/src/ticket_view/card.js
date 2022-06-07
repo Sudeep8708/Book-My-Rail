@@ -14,10 +14,10 @@
         const userFetch = location.state.userFetch;
         const [passenger, setpassenger] = useState([]);
         const [passenger2, setpassenger2] = useState([]);
-        console.log(userFetch, trainDetail);
+        console.log(trainDetail);
         useEffect(() => {
             if(userFetch.flag){
-                const obj ={"username": username, "date": userFetch.date_picker.toLocaleDateString('en-US'), "train_no_1": trainDetail.train_no_1, "train_no_2": trainDetail.train_no_2, "flag": userFetch.flag};
+                const obj ={"username": username, "date": userFetch.date_picker, "train_no_1": trainDetail.train_no_1, "train_no_2": trainDetail.train_no_2, "flag": userFetch.flag};
                 fetch("http://localhost:5000/ticket/connectfetch1", {
                     headers: {
                         'Content-Type': 'application/json',
@@ -45,7 +45,7 @@
                     setpassenger2(myjson);
                 })
             } else {
-                const obj ={"username": username, "date": userFetch.date_picker.toLocaleDateString('en-US'), "train_no": trainDetail.train_no, "flag": userFetch.flag};
+                const obj ={"username": username, "date": userFetch.date_picker, "train_no": trainDetail.train_no, "flag": userFetch.flag};
                 fetch("http://localhost:5000/ticket/fetch", {
                     headers: {
                         'Content-Type': 'application/json',
@@ -103,7 +103,7 @@
                     <p style={{color:'green',textAlign:'center',fontSize:'22px'}}>YOUR BOOKING IS COMPLETE !</p>
                     <p style = {{textAlign:'center'}}>Happy Journey ! </p>
                     <div className="ticket-card">
-                    <Traincard arrival={trainDetail.arrival_1} departure={trainDetail.departure_1} dateofjourney={userFetch.date} from ={trainDetail.from_station_1} to={trainDetail.to_station_1}/>
+                    <Traincard arrival={trainDetail.arrival_1} departure={trainDetail.departure_1} dateofjourney={userFetch.date_picker} from ={trainDetail.from_station_1} to={trainDetail.to_station_1} no = {trainDetail.train_no_1} name = {trainDetail.train_name_1}/>
                     <p  className="cells bold">Ticket no</p>
                     <p  className="cells bold">Name</p>
                     <p  className="cells bold">Age</p>
@@ -118,7 +118,7 @@
                     }
                     </div>
                     <div className="ticket-card">
-                    <Traincard arrival={trainDetail.arrival_2} departure={trainDetail.departure_2} dateofjourney={userFetch.date} from ={trainDetail.from_station_2} to={trainDetail.to_station_2}/> 
+                    <Traincard arrival={trainDetail.arrival_2} departure={trainDetail.departure_2} dateofjourney={userFetch.date_picker} from ={trainDetail.from_station_2} to={trainDetail.to_station_2} no = {trainDetail.train_no_2} name = {trainDetail.train_name_2}/> 
                     <p  className="cells bold">Ticket no</p>
                     <p  className="cells bold">Name</p>
                     <p  className="cells bold">Age</p>
@@ -143,7 +143,7 @@
                     <p style={{color:'green',textAlign:'center',fontSize:'22px'}}>YOUR BOOKING IS COMPLETE !</p>
                     <p style = {{textAlign:'center'}}>Happy Journey ! </p>
                     <div className="ticket-card">
-                    <Traincard arrival={trainDetail.arrival} departure={trainDetail.departure} dateofjourney={userFetch.date_picker.toLocaleDateString('en-UK')} from ={trainDetail.from_station} to={trainDetail.to_station}/>
+                    <Traincard arrival={trainDetail.arrival} departure={trainDetail.departure} dateofjourney={userFetch.date_picker} from ={trainDetail.from_station} to={trainDetail.to_station} no = {trainDetail.train_no} name = {trainDetail.train_name}/>
                     <p  className="cells bold">Ticket no</p>
                     <p  className="cells bold">Name</p>
                     <p  className="cells bold">Age</p>
