@@ -13,21 +13,52 @@
         const trainDetail = location.state.trainDetail;
         const userFetch = location.state.userFetch;
         const [passenger, setpassenger] = useState([]);
-        const obj ={"username": username, "date": userFetch.date_picker, "train_no": trainDetail.train_no};
+        const [passenger2, setpassenger2] = useState([]);
+        console.log(userFetch, trainDetail);
         useEffect(() => {
-            fetch("http://localhost:5000/ticket/fetch", {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json',
-                },
-                method: 'POST',
-                body: JSON.stringify(obj)
-            }).then((response) => {
-                return response.json();
-            }).then((myjson) => {
-                console.log(myjson);
-                setpassenger(myjson);
-            })
+            if(userFetch.flag){
+                const obj ={"username": username, "date": userFetch.date_picker.toLocaleDateString('en-US'), "train_no_1": trainDetail.train_no_1, "train_no_2": trainDetail.train_no_2, "flag": userFetch.flag};
+                fetch("http://localhost:5000/ticket/connectfetch1", {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
+                    },
+                    method: 'POST',
+                    body: JSON.stringify(obj)
+                }).then((response) => {
+                    return response.json();
+                }).then((myjson) => {
+                    console.log(myjson);
+                    setpassenger(myjson);
+                })
+                fetch("http://localhost:5000/ticket/connectfetch2", {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
+                    },
+                    method: 'POST',
+                    body: JSON.stringify(obj)
+                }).then((response) => {
+                    return response.json();
+                }).then((myjson) => {
+                    console.log(myjson);
+                    setpassenger2(myjson);
+                })
+            } else {
+                const obj ={"username": username, "date": userFetch.date_picker.toLocaleDateString('en-US'), "train_no": trainDetail.train_no, "flag": userFetch.flag};
+                fetch("http://localhost:5000/ticket/fetch", {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
+                    },
+                    method: 'POST',
+                    body: JSON.stringify(obj)
+                }).then((response) => {
+                    return response.json();
+                }).then((myjson) => {
+                    console.log(myjson);
+                    setpassenger(myjson);
+                })}
         }, [])
         // console.log(userFetch, trainDetail, passenger);
 
@@ -65,26 +96,71 @@
         //         },
         //     ],
         // };
-        return(
-            <>
-            <div className = "card">
-                <p style={{color:'green',textAlign:'center',fontSize:'22px'}}>YOUR BOOKING IS COMPLETE !</p>
-                <p style = {{textAlign:'center'}}>Happy Journey ! </p>
-                <Traincard arrival={trainDetail.arrival} departure={trainDetail.departure} dateofjourney={userFetch.date_picker} from ={trainDetail.from_station} to={trainDetail.to_station}/>
-                <p style = {{fontSize:'22px'}}>PASSENGER:</p>
-                {
-                    passenger.map((item) => {
-                        return <PassDetails pass={item}/>
-                    })
-                }
-            </div>
-            <div style={{display:'flex',justifyContent:'space-around',padding:'20px'}}>
-            <button style = {{backgroundColor:'black',color:'white',fontWeight:'bold',padding:'10px',width:'100px'}}>EXIT</button>
-            <button style = {{backgroundColor:'green',color:'white',fontWeight:'bold',padding:'10px',width:'100px'}}>PRINT</button>           
-            </div>
-            <div className="footer"></div>
-            </>
-        )
+        if(userFetch.flag){
+            return(
+                <>
+                <div className = "card">
+                    <p style={{color:'green',textAlign:'center',fontSize:'22px'}}>YOUR BOOKING IS COMPLETE !</p>
+                    <p style = {{textAlign:'center'}}>Happy Journey ! </p>
+                    <div className="ticket-card">
+                    <Traincard arrival={trainDetail.arrival_1} departure={trainDetail.departure_1} dateofjourney={userFetch.date} from ={trainDetail.from_station_1} to={trainDetail.to_station_1}/>
+                    <p  className="cells bold">Ticket no</p>
+                    <p  className="cells bold">Name</p>
+                    <p  className="cells bold">Age</p>
+                    <p  className="cells bold">Gender</p>
+                    <p  className="cells bold">Coach</p>
+                    <p  className="cells bold">Seat no</p>
+                    <p className="cells bold">Fare</p>
+                    {
+                        passenger.map((item) => {
+                            return <PassDetails pass={item}/>
+                        })
+                    }
+                    </div>
+                    <div className="ticket-card">
+                    <Traincard arrival={trainDetail.arrival_2} departure={trainDetail.departure_2} dateofjourney={userFetch.date} from ={trainDetail.from_station_2} to={trainDetail.to_station_2}/> 
+                    <p  className="cells bold">Ticket no</p>
+                    <p  className="cells bold">Name</p>
+                    <p  className="cells bold">Age</p>
+                    <p  className="cells bold">Gender</p>
+                    <p  className="cells bold">Coach</p>
+                    <p  className="cells bold">Seat no</p>
+                    <p className="cells bold">Fare</p>
+                    {
+                        passenger2.map((item) => {
+                            return <PassDetails pass={item}/>
+                        })
+                    }
+                    </div>
+                </div>
+                </>
+            )
+        } else {
+            console.log(userFetch)
+            return(
+                <>
+                <div className = "card">
+                    <p style={{color:'green',textAlign:'center',fontSize:'22px'}}>YOUR BOOKING IS COMPLETE !</p>
+                    <p style = {{textAlign:'center'}}>Happy Journey ! </p>
+                    <div className="ticket-card">
+                    <Traincard arrival={trainDetail.arrival} departure={trainDetail.departure} dateofjourney={userFetch.date_picker.toLocaleDateString('en-UK')} from ={trainDetail.from_station} to={trainDetail.to_station}/>
+                    <p  className="cells bold">Ticket no</p>
+                    <p  className="cells bold">Name</p>
+                    <p  className="cells bold">Age</p>
+                    <p  className="cells bold">Gender</p>
+                    <p  className="cells bold">Coach</p>
+                    <p  className="cells bold">Seat no</p>
+                    <p className="cells bold">Fare</p>
+                    {
+                        passenger.map((item) => {
+                            return <PassDetails pass={item}/>
+                        })
+                    }
+                    </div>
+                </div>
+                </>
+            )
+            }
     }
 
     export default Card;
