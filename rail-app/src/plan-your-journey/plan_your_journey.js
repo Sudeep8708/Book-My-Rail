@@ -17,7 +17,7 @@ const Plan_your_journey = () => {
         return {
             from: "",
             to: "",
-            date_picker: new Date(),
+            date_picker: new Date().toLocaleDateString('en-UK'),
             select: "",
             select2: "",
             flag: 0
