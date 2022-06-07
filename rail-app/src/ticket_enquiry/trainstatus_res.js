@@ -1,7 +1,6 @@
 import "./train_enq.css";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Traincard from "../ticket_view/train_card.js";
 
 const Result = () => {
     const location = useLocation();
@@ -24,23 +23,13 @@ const Result = () => {
             });
     }, []);
 
-    let currentdate = new Date();
-    const currTime = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
-
+    var today = new Date();
+    var time = today.toLocaleTimeString("en-UK");
+    console.log(time);
     return (
         <>
-            <p>Running Status of Train Number : {temp}</p>
-            {/* <Traincard
-                name={obj.name}
-                number={obj.number}
-                arrival={obj.arrival}
-                departure={obj.departure}
-                from={obj.from}
-                to={obj.to}
-                dateofjourney={obj.dateofjourney}
-            /> */}
-
             <div className="map-container container">
+                <p>Current Status of Train Number : {temp}</p>
                 <div className="value-container header">
                     <p>Arrived Station</p>
                     <p></p>
@@ -52,7 +41,7 @@ const Result = () => {
                     const [station, code] = String(item.station_name).split(
                         "-"
                     );
-                    if (item.arrival < currTime){
+                    if (item.arrival < time) {
                         return (
                             <div key={code} className="stations">
                                 <div>{code}</div>
@@ -64,8 +53,7 @@ const Result = () => {
                                 <div>{item.arrival}</div>
                             </div>
                         );
-                    }
-                    else {
+                    } else {
                         return (
                             <div key={code} className="stations">
                                 <div>{code}</div>

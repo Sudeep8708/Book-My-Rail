@@ -18,6 +18,14 @@
     width: 80%;
 }
 
+.map-container > p {
+    font-size: 1.4em;
+    font-weight: 400;
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 1em;
+}
+
 .header {
     display: flex;
     justify-content: space-around;
