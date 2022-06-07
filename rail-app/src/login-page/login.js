@@ -34,6 +34,7 @@ const LoginDetails = () => {
                     const pass = myjson[0]["password"];
                     if(account["password"] === pass) {
                         ReactSession.set("username", account["username"]);
+                        ReactSession.set("logged", true);
                         navigate('/')
                     } else {
                         alert("Incorrect Password");

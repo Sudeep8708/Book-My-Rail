@@ -4,7 +4,12 @@
     background-image: linear-gradient(135deg, #e8ebff 50%, #fafaff, #e8ebff);
     box-shadow: 3px 3px 12px 1px #646fd4;
     border-radius: 5px;
-    padding: 5px;
+    padding: 1.5em;
+}
+
+.usr_pnr > label {
+    display: block;
+    font-weight: bold;
 }
 
 .map-container {
@@ -38,12 +43,15 @@
     justify-content: center;
 }
 
-
 .line {
     width: 0.45em;
     height: 5rem;
     background-color: lightblue;
     margin-bottom: 0.5em;
+}
+
+.line.green {
+    background-color: rgb(13, 220, 13);
 }
 
 .circle {
@@ -52,4 +60,8 @@
     border-radius: 100%;
     width: 2em;
     height: 2em;
+}
+
+.circle.green {
+    box-shadow: inset 0 0 0 5px green;
 }

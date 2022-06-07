@@ -79,6 +79,10 @@ const Plan_your_journey = () => {
                     <ContainedButtons value="Search" onclick={handleSubmit} />
                 </div>
             </div>
+            {/* <div>
+                <div></div>
+
+            </div> */}
         </div>
     );
 };

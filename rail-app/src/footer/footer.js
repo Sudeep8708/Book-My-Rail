@@ -23,9 +23,6 @@ const Footer = () => {
                     <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </div>
             </div>
-            <div>
-                <FontAwesomeIcon icon={faPhone} size="2x" /> 7200838025
-            </div>
         </footer>
     );
 };

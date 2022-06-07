@@ -1,12 +1,13 @@
 import './card.css';
 import TrainFromTO from './trainFromTo.js'
 import img from '../img/image.jpg'
+
+
 const Train_card = (props)=>{
-    
     return(
         <>
         <div className="train_card">
-            <div style={{display:'flex',flexDirection:'column'}}>
+            <div>
                 <p>{props.name}</p>
             <img src={img} style={{height:'120px',width:'150px'}} alt="train_logo"/>
             </div>  
