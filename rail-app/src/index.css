@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&family=PT+Sans:ital@0;1&family=Poppins:wght@100;200;300&family=Roboto+Mono:wght@100;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,300;1,100&family=PT+Sans:ital@0;1&family=Poppins:wght@100;200;300&family=Roboto+Mono:wght@100;500&display=swap");
 
 * {
     margin: 0;
@@ -20,24 +20,6 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
-}
-
-/* Plan ur journey */
-.input-field > input {
-    border: 1px solid rgb(167, 167, 167);
-    border-radius: 4px;
-    height: 3.5em;
-    background-color: inherit;
-    z-index: -1;
-}
-.input-field > label {
-    background-color: #e8ebff;
-    color: #696a70;
-    position: relative;
-    bottom: 1.5em;
-    left: 5em;
-    z-index: 2;
-    padding: 1px;
 }
 
 .booking-section {
@@ -135,9 +117,55 @@ code {
     background-color: #f9f9ff;
 }
 
-.class-container >input[type="button"]:focus {
-    border: 3px solid blue ;
+.class-container > input[type="button"]:focus {
+    border: 3px solid blue;
     background-color: #ccd8f6;
+}
+
+/* Plan ur journey */
+
+.home-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1em;
+}
+
+.header-style {
+    width: 35%;
+    font-family: "Inter", sans-serif;
+    font-size: 7rem;
+    font-weight: 300;
+    text-overflow: clip;
+    text-shadow: 1px 5px 7px #242f9b;
+}
+
+.input-field {
+    padding-right: 1.5em;
+}
+
+.input-field > input {
+    border: 1px solid rgb(167, 167, 167);
+    border-radius: 4px;
+    height: 3.5em;
+    background-color: inherit;
+    z-index: -1;
+    width: 15rem;
+}
+
+.input-field > label {
+    display: inline-block;
+    background-color: #e8ebff;
+    color: #696a70;
+    position: relative;
+    bottom: 1.5em;
+    left: 5em;
+    z-index: 2;
+    width: 2em;
+}
+
+.input-field > input:hover {
+    border: 1px solid black;
 }
 
 .plan-container {
@@ -147,7 +175,7 @@ code {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
 }
 
 .plan-container div {
@@ -158,20 +186,6 @@ code {
     margin-top: 0.3em;
     font-family: "Roboto mono", monospace;
     font-weight: 400;
-}
-
-.home-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.header-style {
-    width: 35%;
-    font-family: "Poppins", monospace;
-    font-size: 7rem;
-    text-overflow: clip;
-    text-shadow: 1px 5px 7px #242f9b;
 }
 
 /* Dashboard */
@@ -198,7 +212,8 @@ code {
     align-items: center;
 }
 
-.profile-container div, .history-container div {
+.profile-container div,
+.history-container div {
     text-align: center;
     font-size: 1.2rem;
     padding: 0.2em;

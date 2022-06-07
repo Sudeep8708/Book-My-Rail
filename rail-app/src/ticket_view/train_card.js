@@ -1,6 +1,8 @@
 import './card.css';
 import TrainFromTO from './trainFromTo.js'
 import img from '../img/image.jpg'
+
+
 const Train_card = (props)=>{
     console.log(props)
     return(

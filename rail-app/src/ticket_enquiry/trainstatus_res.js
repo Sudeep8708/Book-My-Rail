@@ -2,6 +2,7 @@ import "./train_enq.css";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Traincard from "../ticket_view/train_card.js";
+
 const Result = () => {
     const location = useLocation();
     const temp = location.state;
@@ -23,17 +24,12 @@ const Result = () => {
             });
     }, []);
 
+    let currentdate = new Date();
+    const currTime = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
     return (
         <>
-            <p
-                style={{
-                    fontWeight: "bold",
-                    fontSize: "20px",
-                    marginTop: "40px",
-                }}
-            >
-                Running Status of Train Number : {temp}
-            </p>
+            <p>Running Status of Train Number : {temp}</p>
             {/* <Traincard
                 name={obj.name}
                 number={obj.number}
@@ -46,8 +42,8 @@ const Result = () => {
 
             <div className="map-container container">
                 <div className="value-container header">
-                    <p>Arrived Station</p> 
-                    <p></p> 
+                    <p>Arrived Station</p>
+                    <p></p>
                     <p>Station Name</p>
                     <p>Departure</p>
                 </div>
@@ -56,17 +52,32 @@ const Result = () => {
                     const [station, code] = String(item.station_name).split(
                         "-"
                     );
-                    return (
-                        <div className="stations">
-                            <div>{code}</div>
-                            <div className="route">
-                                <div className="line"></div>
-                                <div className="circle"></div>
+                    if (item.arrival < currTime){
+                        return (
+                            <div key={code} className="stations">
+                                <div>{code}</div>
+                                <div className="route">
+                                    <div className="line green"></div>
+                                    <div className="circle green"></div>
+                                </div>
+                                <div>{String(station).trim()}</div>
+                                <div>{item.arrival}</div>
                             </div>
-                            <div>{String(station).trim()}</div>
-                            <div>{item.arrival}</div>
-                        </div>
-                    );
+                        );
+                    }
+                    else {
+                        return (
+                            <div key={code} className="stations">
+                                <div>{code}</div>
+                                <div className="route">
+                                    <div className="line"></div>
+                                    <div className="circle"></div>
+                                </div>
+                                <div>{String(station).trim()}</div>
+                                <div>{item.arrival}</div>
+                            </div>
+                        );
+                    }
                 })}
             </div>
         </>

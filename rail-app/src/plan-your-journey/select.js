@@ -47,7 +47,6 @@ export default function SelectTextFields(props) {
           value={class_t}
           name="select"
           onChange={handleChange}
-          helperText="Please select your class"
         >
           {classes.map((option) => (
             <MenuItem key={option.value} value={option.value}>

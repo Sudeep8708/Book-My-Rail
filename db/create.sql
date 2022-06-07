@@ -36,7 +36,7 @@ insert into t_schedule values( "Trichy - TPJ", 6, "12632", '16:20:00', '16:30:00
 insert into t_schedule values( "Villupuram - VM", 7, "12632", '17:00:00', '17:10:00'); 
 insert into t_schedule values( "Chengalpattu - CGL", 8, "12632", '17:40:00', '17:50:00'); 
 insert into t_schedule values( "Tambaram - TBM", 9, "12632", '18:20:00', '18:30:00'); 
-insert into t_schedule values( "Chennai Central - MAS", 10, "12632", '19:00:00', '19:00:00'); 
+insert into t_schedule values( "Chennai Central - MAS", 10, "12632", '19:00:00', '19:10:00'); 
 
 insert into t_schedule values( "Chennai Central - MAS", 1, "12635", '18:00:00', '18:10:00'); 
 insert into t_schedule values( "Tambaram - TBM", 2, "12635", '18:40:00', '18:50:00'); 
