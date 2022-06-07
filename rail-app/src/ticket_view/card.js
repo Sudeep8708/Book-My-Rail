@@ -20,7 +20,7 @@ const Card = () => {
         if (userFetch.flag) {
             const obj = {
                 username: username,
-                date: userFetch.date_picker.toLocaleDateString("en-US"),
+                date: userFetch.date_picker,
                 train_no_1: trainDetail.train_no_1,
                 train_no_2: trainDetail.train_no_2,
                 flag: userFetch.flag,
@@ -58,7 +58,7 @@ const Card = () => {
         } else {
             const obj = {
                 username: username,
-                date: userFetch.date_picker.toLocaleDateString("en-US"),
+                date: userFetch.date_picker,
                 train_no: trainDetail.train_no,
                 flag: userFetch.flag,
             };
@@ -137,7 +137,7 @@ const Card = () => {
                         <Traincard
                             arrival={trainDetail.arrival_1}
                             departure={trainDetail.departure_1}
-                            dateofjourney={userFetch.date}
+                            dateofjourney={userFetch.date_picker}
                             from={trainDetail.from_station_1}
                             to={trainDetail.to_station_1}
                         />
@@ -156,7 +156,7 @@ const Card = () => {
                         <Traincard
                             arrival={trainDetail.arrival_2}
                             departure={trainDetail.departure_2}
-                            dateofjourney={userFetch.date}
+                            dateofjourney={userFetch.date_picker}
                             from={trainDetail.from_station_2}
                             to={trainDetail.to_station_2}
                         />
@@ -194,9 +194,7 @@ const Card = () => {
                         <Traincard
                             arrival={trainDetail.arrival}
                             departure={trainDetail.departure}
-                            dateofjourney={userFetch.date_picker.toLocaleDateString(
-                                "en-UK"
-                            )}
+                            dateofjourney={userFetch.date_picker}
                             from={trainDetail.from_station}
                             to={trainDetail.to_station}
                         />
