@@ -5,7 +5,6 @@ const path = require('path');
 const app = express(); 
 const con = require('./db_connect');
 
-
 app.use(cors());
 
 app.use(express.urlencoded({ extended: false }))
@@ -38,7 +37,7 @@ app.post('/signup/submit', (req, res) => {
 })
 
 app.post('/planYourJourney/trainSchedule', (req, res) => {
-    const q = "select A.station_name as from_station, B.station_name as to_station, A.arrival as arrival, B.arrival as departure, A.platform_no as arr_platform_no, B.platform_no as dep_platform_no, C.train_no as train_no, C.train_name as train_name, C.total_coach as total_coach, C.total_seats as total_seats, C.booked_seats as booked_seats, C.FC_total as FC_total, C.FC_booked as FC_booked, C.AC_total as AC_total, C.AC_booked as AC_booked, C.ST_total as ST_total, C.ST_booked as ST_booked, C.SL_total as SL_total, C.SL_booked as SL_booked from ((t_schedule A inner join t_schedule B on A.train_no = B.train_no and A.arrival < B.arrival) inner join train_details C on C.train_no = A.train_no) where A.station_name = '"+ String(req.body.from) +"' and B.station_name = '"+ String(req.body.to) +"'"; 
+    const q = "select A.station_name as from_station, B.station_name as to_station, A.arrival as arrival, B.arrival as departure, A.platform_no as arr_platform_no, B.platform_no as dep_platform_no, C.train_no as train_no, C.train_name as train_name, C.total_coach as total_coach, C.total_seats as total_seats, D.booked_seats as booked_seats, C.FC_total as FC_total, D.FC_booked as FC_booked, C.AC_total as AC_total, D.AC_booked as AC_booked, C.ST_total as ST_total, D.ST_booked as ST_booked, C.SL_total as SL_total, D.SL_booked as SL_booked from (((t_schedule A inner join t_schedule B on A.train_no = B.train_no and A.arrival < B.arrival) inner join train_details C on C.train_no = A.train_no) inner join date_entry D on D.train_no = C.train_no) where A.station_name = '"+ String(req.body.from) +"' and B.station_name = '"+ String(req.body.to) +"' and D.date = STR_TO_DATE('" + String(req.body.date_picker) + "', '%d/%m/%Y') "; 
     con.query(q, function (err, result, fields) {
         if(err) throw err;
         console.log(result);
@@ -47,7 +46,7 @@ app.post('/planYourJourney/trainSchedule', (req, res) => {
 })  
 
 app.post('/planYourJourney/connectingtrain', (req, res) => {
-    const q= "select A.station_name as from_station_1, B.station_name as to_station_1, D.station_name as from_station_2, E.station_name as to_station_2, A.arrival as arrival_1, B.arrival as departure_1, D.arrival as arrival_2, E.arrival as departure_2, A.platform_no as arr_platform_1 , B.platform_no as dep_platform_1, D.platform_no as arr_platform_2, E.platform_no as dep_platform_2, C.train_no as train_no_1, C.train_name as train_name_1, C.total_coach as total_coach_1, C.total_seats as total_seats_1, C.booked_seats as booked_seats_1, C.FC_total as FC_total_1, C.FC_booked as FC_booked_1, C.AC_total as AC_total_1, C.AC_booked as AC_booked_1, C.ST_total as ST_total_1, C.ST_booked as ST_booked_1, C.SL_total as SL_total_1, C.SL_booked as SL_booked_1, F.train_no as train_no_2, F.train_name as train_name_2, F.total_coach as total_coach_2, F.total_seats as total_seats_2, F.booked_seats as booked_seats_2, F.FC_total as FC_total_2, F.FC_booked as FC_booked_2, F.AC_total as AC_total_2, F.AC_booked as AC_booked_2, F.ST_total as ST_total_2, F.ST_booked as ST_booked_2, F.SL_total as SL_total_2, F.SL_booked as SL_booked_2  from (((t_schedule A inner join t_schedule B on A.train_no = B.train_no and A.arrival < B.arrival) inner join train_details C on C.train_no = A.train_no) inner join ((t_schedule D inner join t_schedule E on D.train_no = E.train_no and D.arrival < E.arrival) inner join train_details F on F.train_no = D.train_no) on B.station_name = D.station_name and B.arrival < D.departure and C.train_no != F.train_no) where A.station_name = '"+ String(req.body.from) +"' and E.station_name = '"+ String(req.body.to) +"'"; 
+    const q= "select A.station_name as from_station_1, B.station_name as to_station_1, D.station_name as from_station_2, E.station_name as to_station_2, A.arrival as arrival_1, B.arrival as departure_1, D.arrival as arrival_2, E.arrival as departure_2, A.platform_no as arr_platform_1 , B.platform_no as dep_platform_1, D.platform_no as arr_platform_2, E.platform_no as dep_platform_2, C.train_no as train_no_1, C.train_name as train_name_1, C.total_coach as total_coach_1, C.total_seats as total_seats_1, G.booked_seats as booked_seats_1, C.FC_total as FC_total_1, G.FC_booked as FC_booked_1, C.AC_total as AC_total_1, G.AC_booked as AC_booked_1, C.ST_total as ST_total_1, G.ST_booked as ST_booked_1, C.SL_total as SL_total_1, G.SL_booked as SL_booked_1, F.train_no as train_no_2, F.train_name as train_name_2, F.total_coach as total_coach_2, F.total_seats as total_seats_2, H.booked_seats as booked_seats_2, F.FC_total as FC_total_2, H.FC_booked as FC_booked_2, F.AC_total as AC_total_2, H.AC_booked as AC_booked_2, F.ST_total as ST_total_2, H.ST_booked as ST_booked_2, F.SL_total as SL_total_2, H.SL_booked as SL_booked_2  from ((((t_schedule A inner join t_schedule B on A.train_no = B.train_no and A.arrival < B.arrival) inner join train_details C on C.train_no = A.train_no) inner join date_entry G on G.train_no = C.train_no) inner join (((t_schedule D inner join t_schedule E on D.train_no = E.train_no and D.arrival < E.arrival) inner join train_details F on F.train_no = D.train_no) inner join date_entry H on H.train_no = F.train_no ) on B.station_name = D.station_name and B.arrival < D.departure and C.train_no != F.train_no) where A.station_name = '"+ String(req.body.from) +"' and E.station_name = '"+ String(req.body.to) +"' and G.date = STR_TO_DATE('" + String(req.body.date_picker) + "', '%d/%m/%Y') and H.date = STR_TO_DATE('" + String(req.body.date_picker) + "', '%d/%m/%Y')"; 
     con.query(q, function (err, result, fields) {
         if(err) throw err;
         console.log(result);
@@ -92,7 +91,7 @@ app.post('/dashboard/acc_detail', (req, res) => {
 })
 
 app.post('/dashboard/travel-history', (req, res) => {
-    const q = "select count(*) as count, sum(fare) as price,ticket_no, from_station, to_station from tickets where username='" + String(req.body.username) + "' group by ticket_no";
+    const q = "select count(*) as count, sum(fare) as price,ticket_no, from_station, to_station from tickets where username='" + String(req.body.username) + "' group by date,train_no order by date, ticket_no";
     console.log(req.body.username)
     con.query(q, function(err, result) {
         if(err) throw err;
@@ -116,7 +115,7 @@ app.post('/booking/submission', (req, res) => {
             con.query(q1, function(err) {
                 if (err) throw err;
             })
-            const q2 = "update train_details set " + String(req.body.select) + "_booked = " + String(req.body.select) + "_booked + 1 where train_no = '" + String(req.body.train_no) + "'";
+            const q2 = "update date_entry set " + String(req.body.select) + "_booked = " + String(req.body.select) + "_booked + 1, booked_seats = booked_seats + 1 where train_no = '" + String(req.body.train_no) + "' and date = STR_TO_DATE('" + String(req.body.date_picker) + "', '%d/%m/%Y')";
             con.query(q2, function(err) {
                 if (err) throw err;
             })
@@ -145,7 +144,7 @@ app.post('/booking/connectsubmission', (req, res) => {
             con.query(q1, function(err) {
                 if (err) throw err;
             })
-            const q2 = "update train_details set " + String(req.body.select) + "_booked = " + String(req.body.select) + "_booked + 1 where train_no = '" + String(req.body.train_no_1) + "'";
+            const q2 = "update date_entry set " + String(req.body.select) + "_booked = " + String(req.body.select) + "_booked + 1, booked_seats = booked_seats + 1 where train_no = '" + String(req.body.train_no_1) + "' and date = STR_TO_DATE('" + String(req.body.date_picker) + "', '%d/%m/%Y')";
             con.query(q2, function(err) {
                 if (err) throw err;
             })
@@ -153,7 +152,7 @@ app.post('/booking/connectsubmission', (req, res) => {
             con.query(q3, function(err) {
                 if (err) throw err;
             })
-            const q4 = "update train_details set " + String(req.body.select2) + "_booked = " + String(req.body.select2) + "_booked + 1 where train_no = '" + String(req.body.train_no_2) + "'";
+            const q4 = "update date_entry set " + String(req.body.select) + "_booked = " + String(req.body.select) + "_booked + 1, booked_seats = booked_seats + 1 where train_no = '" + String(req.body.train_no_2) + "' and date = STR_TO_DATE('" + String(req.body.date_picker) + "', '%d/%m/%Y')";
             con.query(q4, function(err) {
                 if (err) throw err;
             })

@@ -25,7 +25,7 @@ const Result = () => {
     }, []);
 
     let currentdate = new Date();
-    const currTime = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+    const currTime = currentdate.toLocaleTimeString("en-UK")
 
     return (
         <>

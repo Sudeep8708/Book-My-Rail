@@ -13,7 +13,7 @@ const TrainSchedule = () => {
     console.log("Received at Train Schedule(location): ",location.state.location);
     const trainDetail = location.state.query;
     const userFetch = location.state.location;
-    console.log(userFetch);
+    console.log(trainDetail);
     if(userFetch.flag === 0){
     return (
         <div>
