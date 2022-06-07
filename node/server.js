@@ -92,7 +92,7 @@ app.post('/dashboard/acc_detail', (req, res) => {
 })
 
 app.post('/dashboard/travel-history', (req, res) => {
-    const q = "select count(*) as count, sum(fare) as price,ticket_no, from_station, to_station from tickets where username='" + String(req.body.username) + "' group by ticket_no";
+    const q = "select count(*) as count, sum(fare) as price,ticket_no, from_station, to_station,train_no,date from tickets where username='" + String(req.body.username) + "' group by date,train_no";
     console.log(req.body.username)
     con.query(q, function(err, result) {
         if(err) throw err;

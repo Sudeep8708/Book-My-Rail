@@ -212,6 +212,11 @@ code {
     align-items: center;
 }
 
+.his-con {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+
 .profile-container div,
 .history-container div {
     text-align: center;
@@ -220,8 +225,13 @@ code {
     margin: 0.5em;
 }
 
+.his-con .bold {
+    text-transform: capitalize;
+}
+
 .t_no {
     border-bottom: 1px solid #696a70;
+    grid-column: 1/6;
 }
 
 /* nav bar */
