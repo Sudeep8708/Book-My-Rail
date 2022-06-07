@@ -2,10 +2,9 @@ import InputWithIcon from "./input";
 import ResponsiveDatePickers from "./date_picker";
 import SelectTextFields from "./select";
 import ContainedButtons from "./button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ReactSession } from "react-client-session";
-//import { useNavigate } from "react-router-dom";
 import Booking from "../booking/booking";
 import StationSelect from "./station-select";
 ReactSession.setStoreType("sessionStorage");
@@ -14,28 +13,51 @@ const Plan_your_journey = () => {
     const username = ReactSession.get("username");
     const location = useLocation();
     const navigate = useNavigate();
-
-    // if(location.state != null){
-    //    const username = location.state.username;
-    // //    console.log(username);
-    // }
     const [obj, setObj] = useState(() => {
         return {
             from: "",
             to: "",
-            date_picker: "",
+            date_picker: new Date(),
             select: "",
-        };
+            select2: "",
+            flag: 0
+        };  
     });
     const onChangeObj = (e) => {
         setObj({ ...obj, [e.target.name]: e.target.value });
     };
 
     const onChangeDate = (o) => {
-        setObj({ ...obj, [o.name]: o.value });
+        setObj({ ...obj, [o.name]: o.value.toLocaleDateString('en-UK') });
     };
+    const handleConnect = (e) => {
+        fetch("http://localhost:5000/planYourJourney/connectingtrain", {
+                        headers: {
+                            Accept: "application/json",
+                            "Content-Type": "application/json",
+                        },
+                        method: "POST",
+                        body: JSON.stringify(obj),
+                    }).then(function (response){
+                        return response.json();
+                    }).then(function (myjson){
+                        if (myjson["length"] === 0){
+                            alert("No trains available!");
+                            navigate('/');
+                        }else {
+                            navigate("/trainschedule", {
+                                state: { location: obj, query: myjson},
+                            });
+                        }
+                    });
+    }
+    useEffect(() => {
+        if(obj.flag) {
+            handleConnect()
+        }
+    }, [obj])
     const handleSubmit = (e) => {
-        console.log(obj);
+        setObj({...obj, "select2": obj.select});
         fetch("http://localhost:5000/planYourJourney/trainSchedule", {
             headers: {
                 Accept: "application/json",
@@ -43,16 +65,14 @@ const Plan_your_journey = () => {
             },
             method: "POST",
             body: JSON.stringify(obj),
-        })
-            .then(function (response) {
+        }).then(function (response) {
                 return response.json();
-            })
-            .then(function (myjson) {
+            }).then(function (myjson) {
                 if (myjson["length"] === 0) {
-                    alert("No trains are available");
+                    setObj({...obj, "flag": 1});
                 } else {
                     console.log(myjson);
-                    navigate("trainschedule", {
+                    navigate("/trainschedule", {
                         state: { location: obj, query: myjson},
                     });
                 }
@@ -70,7 +90,7 @@ const Plan_your_journey = () => {
                     <StationSelect name="to" onchange={onChangeObj}/>
                 </div>
                 <div>
-                    <ResponsiveDatePickers onchange={onChangeObj} />
+                    <ResponsiveDatePickers onchange={onChangeDate} />
                 </div>
                 <div>
                     <SelectTextFields onchange={onChangeObj} />

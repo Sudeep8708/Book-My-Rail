@@ -9,7 +9,7 @@ ReactSession.setStoreType("sessionStorage");
 
 const TicketFare = (props) => {
     const count = props.count + 1;
-    const fare = props.fare;
+    const fare = props.fare.fare;
     return (
         <div className="container ticket">
             <h4>Fare table: </h4>
@@ -25,21 +25,38 @@ const Booking = () => {
     const username = ReactSession.get("username");
     const trainDetail = location.state.trainDetail;
     const userFetch = location.state.userFetch;
-    const [fare, setFare] = useState(0);
+    const [fare, setFare] = useState({});
     useEffect(() => {
-        fetch("http://localhost:5000/booking/fareCalculation", {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            method: "POST",
-            body: JSON.stringify({"select": userFetch.select, "train_no": trainDetail.train_no, "from": trainDetail.from_station, "to": trainDetail.to_station}),
-        }).then(function (response) {
-                return response.json();
-            })
-            .then(function (myjson) {
-                setFare(myjson[0].fare);
-            });
+        if(userFetch.flag){
+            fetch("http://localhost:5000/booking/connectfareCalculation", {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify({"select": userFetch.select, "select2": userFetch.select2, "train_no_1": trainDetail.train_no_1, "train_no_2": trainDetail.train_no_2, "from_1": trainDetail.from_station_1, "to_1": trainDetail.to_station_1, "from_2": trainDetail.from_station_2, "to_2": trainDetail.to_station_2}),
+            }).then(function (response) {
+                    return response.json();
+                })
+                .then(function (myjson) {
+                    console.log(myjson);
+                    setFare(myjson[0]);
+                });
+        } else {
+            fetch("http://localhost:5000/booking/fareCalculation", {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify({"select": userFetch.select, "train_no": trainDetail.train_no, "from": trainDetail.from_station, "to": trainDetail.to_station}),
+            }).then(function (response) {
+                    return response.json();
+                })
+                .then(function (myjson) {
+                    setFare(myjson[0]);
+                });
+        }
     }, [])
     const profile = 
         {
@@ -48,6 +65,7 @@ const Booking = () => {
             gender: "",
             preference: "",
         };
+    const dat = userFetch.date_picker.toLocaleDateString('en-US');
     const [count, setCount] = useState(0);
     const [passenger, setPassengerDetails] = useState([profile]);
 
@@ -92,25 +110,45 @@ const Booking = () => {
         passenger.forEach((item) => {
             console.log(item.name + item.gender + item.age + item.preference);
         });
-        const obj = {...userFetch, ...trainDetail, ["username"]: username, ["fare"]: fare, ["passenger"]: passenger};
+        const obj = {...userFetch, ...trainDetail, ["username"]: username, ["fare"]: fare, ["passenger"]: passenger, ["date"]:dat};
         console.log(obj);
-        fetch("http://localhost:5000/booking/submission", {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            method: "POST",
-            body: JSON.stringify(obj),
-        }).then (function (response) {
-            return response.json();
-        }).then (function (myjson) {
-            if(myjson["flag"] === 0){
-                alert("All seats are booked!");
-                navigate("/");
-            } else {
-                navigate("/ticket", {state: { userFetch: userFetch, trainDetail: trainDetail}})
-            }
-        })
+        if(userFetch.flag){
+            fetch("http://localhost:5000/booking/connectsubmission", {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(obj),
+            }).then (function (response) {
+                return response.json();
+            }).then (function (myjson) {
+                if(myjson["flag"] === 0){
+                    alert("All seats are booked!");
+                    navigate("/");
+                } else {
+                    navigate("/ticket", {state: { userFetch: userFetch, trainDetail: trainDetail}})
+                }
+            })
+        } else {
+            fetch("http://localhost:5000/booking/submission", {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(obj),
+            }).then (function (response) {
+                return response.json();
+            }).then (function (myjson) {
+                if(myjson["flag"] === 0){
+                    alert("All seats are booked!");
+                    navigate("/");
+                } else {
+                    navigate("/ticket", {state: { userFetch: userFetch, trainDetail: trainDetail}})
+                }
+            })
+        }
         
     };
 

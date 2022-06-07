@@ -6,7 +6,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Stack from '@mui/material/Stack';
 
 export default function ResponsiveDatePickers(props) {
-  const [value, setValue] = React.useState(new Date());
+  const [value, setValue] = React.useState(new Date('08/06/2022'));
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DatePicker
@@ -15,6 +15,7 @@ export default function ResponsiveDatePickers(props) {
           openTo="year"
           views={['year', 'month', 'day']}
           value={value}
+          dateFormat= 'yyyy/mm/dd'
           onChange={(newValue) => {
             setValue(newValue)
             props.onchange({name:"date_picker", value:newValue})
