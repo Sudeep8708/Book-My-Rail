@@ -23,7 +23,6 @@ const Page = () => {
             <label>
                 Enter your Train Number:{" "}
             </label>
-            <br />
             <input type="text" onChange={changeval} />
             <br />
             <input type="submit" onClick={handleSubmit} value="Submit" />

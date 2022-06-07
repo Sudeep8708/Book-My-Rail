@@ -5,17 +5,29 @@
     box-shadow: 3px 3px 12px 1px #646fd4;
     border-radius: 5px;
     padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .usr_pnr > label {
     display: block;
     font-weight: bold;
+    margin-top: 1em;
 }
 
 .map-container {
     padding: 20px;
     margin: 1em auto;
     width: 80%;
+}
+
+.map-container > p {
+    font-size: 1.4em;
+    font-weight: 400;
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 1em;
 }
 
 .header {
