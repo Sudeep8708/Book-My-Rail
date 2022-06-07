@@ -8,7 +8,7 @@ const Page = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        navigate("/trainenq/details", { state: train });
+        navigate("/trainenq/details", { state: train.split('_')[0] });
     }
 
     function changeval(e) {
@@ -21,7 +21,7 @@ const Page = () => {
                 Track your Train
             </h2>
             <label>
-                Enter your Train Number:{" "}
+                Enter your Train / Ticket Number:{" "}
             </label>
             <input type="text" onChange={changeval} />
             <br />
