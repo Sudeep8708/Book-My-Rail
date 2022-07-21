@@ -5,10 +5,11 @@ import "./index.css";
 
 //import App from './login-page/signup';
 import reportWebVitals from "./reportWebVitals";
+import Train_enq from './ticket_enquiry/page.js'
+import Train_enq_res from './ticket_enquiry/trainstatus_res.js'
 import Book from "./booking/booking";
 import Plan_your_journey from "./plan-your-journey/plan_your_journey";
 import Signup from "./login-page/signup.js";
-import TrainDetail from "./train-schedule/train";
 import LoginDetails from "./login-page/login";
 import Navbar from "./navbar/nav-bar.js";
 import Four_not_four from "./four_not_four.js";
@@ -23,10 +24,12 @@ export default function Main() {
     return (
         <>
             <Navbar />
-            {/* <DashBoard /> */}
             <Routes>
                 <Route path="/" element={<Plan_your_journey />} />
                  <Route path="booking" element={<Book />} />
+                 <Route path = "trainenq" element = {<Train_enq/>}/>
+                 <Route path = "trainenq/details" element = {<Train_enq_res/>}/>
+
                 <Route path="trainschedule/" element={<Trainschedule />} />
                 <Route path="trainschedule/ticketbooking" element={<Book />} />
                 <Route path="trainschedule/ticket" element={<Ticketview />} />

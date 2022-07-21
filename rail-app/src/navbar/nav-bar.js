@@ -1,7 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import img from "../img/Easy rail-logos_transparent.png";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
+import { faBars, faSleigh } from "@fortawesome/free-solid-svg-icons";
+import { NavLink, useNavigate } from "react-router-dom";
+import { ReactSession } from "react-client-session";
+import { React, useState } from "react";
+ReactSession.setStoreType("sessionStorage");
 
 const Navbar = () => {
     // const showMenu = () => {
@@ -13,6 +16,15 @@ const Navbar = () => {
     //         elt.style.display = "flex"
     //     }
     // }
+    const navigate = useNavigate();
+    const logout = () => {
+        ReactSession.set("logged", false);
+        ReactSession.set("username", "");
+        navigate("/");
+    };
+
+    const login = ReactSession.get("logged");
+    console.log(ReactSession.get("username"));
     return (
         <div className="nav-bar">
             <div>
@@ -20,8 +32,13 @@ const Navbar = () => {
                     <img src={img} alt="Logo" className="img-size" />
                 </NavLink>
             </div>
-            <FontAwesomeIcon icon={faBars}  size="2x" className='nav-menu'/>
+            <FontAwesomeIcon icon={faBars} size="2x" className="nav-menu" />
             <div className="nav-links">
+                <div>
+                    <NavLink to="/trainenq" className="link">
+                        Train Enquiry
+                    </NavLink>
+                </div>
                 <div>
                     <NavLink to="/contact" className="link">
                         Contact
@@ -37,16 +54,26 @@ const Navbar = () => {
                         DashBoard
                     </NavLink>
                 </div>
-                <div>
-                    <NavLink to="/login" className="link">
-                        Login
-                    </NavLink>
-                </div>
-                <div>
-                    <NavLink to="/signup" className="link">
-                        SignUp
-                    </NavLink>
-                </div>
+                {login == true ? (
+                    <div>
+                        <p className="link" onClick={logout}>
+                            Logout
+                        </p>
+                    </div>
+                ) : (
+                    <>
+                        <div>
+                            <NavLink to="/login" className="link">
+                                Login
+                            </NavLink>
+                        </div>
+                        <div>
+                            <NavLink to="/signup" className="link">
+                                SignUp
+                            </NavLink>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );

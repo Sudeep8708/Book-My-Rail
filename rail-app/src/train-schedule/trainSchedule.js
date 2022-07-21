@@ -1,6 +1,6 @@
-import TrainDetail from "./train";
+import TrainDetail from "./trains";
+import ConnectingTrain from "./connectingTrain";
 import {NavLink,useNavigate,useLocation} from "react-router-dom"
-import Plan_your_journey from "../plan-your-journey/plan_your_journey";
 import { ReactSession }  from 'react-client-session';
 ReactSession.setStoreType("sessionStorage");
 
@@ -13,17 +13,24 @@ const TrainSchedule = () => {
     console.log("Received at Train Schedule(location): ",location.state.location);
     const trainDetail = location.state.query;
     const userFetch = location.state.location;
+    console.log(trainDetail);
+    if(userFetch.flag === 0){
     return (
         <div>
-            {/* <Plan_your_journey /> */}
             <div className="container train-container">
-                <TrainDetail userFetch={userFetch} trainDetail={trainDetail}/>
-            <input type="submit" value="Book now" onClick={()=>{
-                navigate('ticketbooking');
-            }} />
+                <TrainDetail trainDetail={trainDetail} userFetch={userFetch} />
             </div>
         </div>
     );
+     } else {
+        return (
+            <div>
+                <div className="container train-container">
+                    <ConnectingTrain trainDetail={trainDetail} userFetch={userFetch} />
+                </div>
+            </div>
+        );
+     }
 };
 
 export default TrainSchedule;

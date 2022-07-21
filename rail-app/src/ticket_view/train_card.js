@@ -1,20 +1,20 @@
 import './card.css';
 import TrainFromTO from './trainFromTo.js'
 import img from '../img/image.jpg'
-const Train_card = ()=>{
 
+
+const Train_card = (props)=>{
+    console.log(props)
     return(
         <>
         <div className="train_card">
-            <div style={{display:'flex',flexDirection:'column'}}>
-                <p>NATIONAL EXPRESS</p>
+            <div>
             <img src={img} style={{height:'120px',width:'150px'}} alt="train_logo"/>
+            <h4>{props.no} - {props.name}</h4>
             </div>  
-            <TrainFromTO date="12-05-2022" time="9:00" from_to = "CHN"/>    
-            <TrainFromTO date="12-05-2022" time="14:00" from_to = "CBE"/>
+            <TrainFromTO time = {props.arrival} date = {props.dateofjourney} from_to={props.from}/>    
+            <TrainFromTO time = {props.departure} date = {props.dateofjourney} from_to={props.to}/>
         </div>
-        <br/>   
-        <hr/>
         </>
     )
 }

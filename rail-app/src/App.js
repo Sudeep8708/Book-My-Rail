@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 
 //import App from './login-page/signup';
+
 import reportWebVitals from "./reportWebVitals";
 import Book from "./booking/booking";
 import Plan_your_journey from "./plan-your-journey/plan_your_journey";
@@ -26,6 +27,7 @@ export default function Main() {
             {/* <DashBoard /> */}
             <Routes>
                 <Route path="/" element={<Plan_your_journey />} />
+                
                  <Route path="booking" element={<Book />} />
                 <Route path="trainschedule/" element={<Trainschedule />} />
                 <Route path="trainschedule/ticketbooking" element={<Book />} />
@@ -38,7 +40,8 @@ export default function Main() {
                 <Route path="/dashboard" element={<DashBoard />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/ticket" element={<Ticketview />} />
-                <Route path="*" element={<Four_not_four />} />F
+                
+                <Route path="*" element={<Four_not_four />} />
             </Routes>
             <Footer />
         </>
